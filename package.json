@@ -6,6 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "peerDependencies": {
+    "eslint": ">= 3",
+    "eslint-plugin-import": ">= 4",
+    "eslint-plugin-promise": ">= 2",
+    "eslint-config-airbnb-base": ">= 13"
+  },
   "author": "",
   "license": "ISC"
 }
