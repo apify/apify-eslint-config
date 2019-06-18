@@ -1,13 +1,13 @@
 {
   "name": "eslint-config-apify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ESLint configuration shared accross projects in Apify.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "test $RUNNING_FROM_SCRIPT || (echo \"You must use publish.sh instead of 'npm publish' directly!\"; exit 1)"
   },
-  "peerDependencies": {
+  "dependencies": {
     "eslint": "^5.12.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
