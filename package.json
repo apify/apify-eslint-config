@@ -7,10 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
-    "eslint": ">= 3",
-    "eslint-plugin-import": ">= 4",
-    "eslint-plugin-promise": ">= 2",
-    "eslint-config-airbnb-base": ">= 13"
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.1",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.12.3"
   },
   "author": "",
   "license": "ISC"
