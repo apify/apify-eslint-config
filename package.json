@@ -4,7 +4,8 @@
   "description": "ESLint configuration shared accross projects in Apify.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "test $RUNNING_FROM_SCRIPT || (echo \"You must use publish.sh instead of 'npm publish' directly!\"; exit 1)"
   },
   "peerDependencies": {
     "eslint": "^5.12.0",
