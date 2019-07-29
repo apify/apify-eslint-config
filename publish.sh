@@ -25,7 +25,7 @@ git push
 # Master gets published as LATEST if that version doesn't exists yet and retagged as LATEST otherwise.
 if [ "${BRANCH}" = "master" ]; then
     echo "Publishing version ${PACKAGE_VERSION} with tag \"latest\" ..."
-    RUNNING_FROM_SCRIPT=1 npm publish --tag latest
+    RUNNING_FROM_SCRIPT=1 npm publish --tag latest --access public
 
     echo "Tagging git commit with ${GIT_TAG} ..."
     git tag ${GIT_TAG}
