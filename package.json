@@ -1,20 +1,20 @@
 {
-  "name": "eslint-config-apify",
-  "version": "0.0.2",
-  "description": "ESLint configuration shared accross projects in Apify.",
+  "name": "@apify/eslint-config",
+  "version": "0.0.1",
+  "description": "ESLint configuration shared across projects in Apify.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "test $RUNNING_FROM_SCRIPT || (echo \"You must use publish.sh instead of 'npm publish' directly!\"; exit 1)"
   },
   "dependencies": {
-    "eslint": "^5.12.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.1",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.12.3"
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.14.3"
   },
   "author": "",
   "license": "ISC"
