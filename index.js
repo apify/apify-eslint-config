@@ -29,6 +29,7 @@ module.exports = {
         "no-await-in-loop": 0,
         "arrow-body-style": 0,
         "import/no-named-as-default": 0,
-        "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"]
+        "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
+        "no-prototype-builtins": 1
     }
 };
