@@ -1,5 +1,10 @@
 module.exports = {
-    "extends": ["airbnb-base"],
+    "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "airbnb-base"
+    ],
+    "parser": "@typescript-eslint/parser",
     "plugins": [
         "import"
     ],
@@ -30,6 +35,38 @@ module.exports = {
         "arrow-body-style": 0,
         "import/no-named-as-default": 0,
         "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
-        "no-prototype-builtins": 1
-    }
+        "no-prototype-builtins": 1,
+        // disable the rule for all files
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "react/prop-types": "off"
+    },
+    "overrides": [
+        {
+            // enable the rule specifically for jsx files
+            "files": [
+                "*.jsx"
+            ],
+            "rules": {
+                "react/prop-types": [
+                    "error"
+                ]
+            }
+        },
+        {
+            // enable the rule specifically for TypeScript files
+            "files": [
+                "*.ts",
+                "*.tsx"
+            ],
+            "rules": {
+                "@typescript-eslint/explicit-module-boundary-types": [
+                    "error"
+                ],
+                "@typescript-eslint/no-var-requires": [
+                    "error"
+                ]
+            }
+        }
+    ]
 };
