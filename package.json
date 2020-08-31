@@ -8,21 +8,20 @@
     "prepublishOnly": "test $RUNNING_FROM_SCRIPT || (echo \"You must use publish.sh instead of 'npm publish' directly!\"; exit 1)"
   },
   "dependencies": {
-    "@types/node": "^14.6.0",
-    "@types/react": "^16.9.47",
-    "@types/styled-components": "^5.1.2",
-    "@typescript-eslint/eslint-plugin": "^3.10.1",
-    "@typescript-eslint/parser": "^3.10.1",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-import-resolver-typescript": "^2.2.1",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.0",
-    "typescript": "^4.0.2"
+    "eslint-plugin-react-hooks": "^4.1.0"
   },
   "peerDependencies": {
-    "eslint": "*"
+    "eslint": "*",
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
+    "typescript": "^3.9.7"
   },
   "author": "",
   "license": "ISC"

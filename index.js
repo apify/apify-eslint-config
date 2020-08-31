@@ -1,10 +1,7 @@
 module.exports = {
     "extends": [
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
         "airbnb-base"
     ],
-    "parser": "@typescript-eslint/parser",
     "plugins": [
         "import"
     ],
@@ -36,37 +33,53 @@ module.exports = {
         "import/no-named-as-default": 0,
         "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
         "no-prototype-builtins": 1,
-        // disable the rule for all files
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/no-var-requires": "off",
-        "react/prop-types": "off"
+
+        //Listed extensions are not linted on import
+        //
+        // imports cannot have .ts and .tsx extensions as it is default typescript behavior which cannot be changed at the moment
+        // and therefore it is listed so it will not be linted by eslint
+        //
+        // Correct: import Component from "path/to/Component.jsx"
+        // Correct: import jsFile from "path/to/jsFile"
+        // Wrong: import jsFile from "path/to/jsFile.js"
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ]
+    },
+    "settings": {
+        "import/resolver": {
+            "typescript": {
+                "project": "./tsconfig.json"
+            }
+        }
     },
     "overrides": [
         {
-            // enable the rule specifically for jsx files
-            "files": [
-                "*.jsx"
+            "files": ["**/*.ts", "**/*.tsx"],
+            "env": { "browser": true, "es6": true, "node": true },
+            "extends": [
+                "eslint:recommended",
+                "plugin:@typescript-eslint/eslint-recommended",
+                "plugin:@typescript-eslint/recommended"
             ],
+            "parser": "@typescript-eslint/parser",
+            "parserOptions": {
+                "project": "./tsconfig.json"
+            },
+            "plugins": ["@typescript-eslint"],
             "rules": {
-                "react/prop-types": [
-                    "error"
-                ]
-            }
-        },
-        {
-            // enable the rule specifically for TypeScript files
-            "files": [
-                "*.ts",
-                "*.tsx"
-            ],
-            "rules": {
-                "@typescript-eslint/explicit-module-boundary-types": [
-                    "error"
-                ],
-                "@typescript-eslint/no-var-requires": [
+                "react/prop-types": "off",
+                "no-unused-vars": "off",
+                "@typescript-eslint/no-unused-vars": [
                     "error"
                 ]
             }
         }
     ]
-};
+}
