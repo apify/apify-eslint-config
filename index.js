@@ -75,10 +75,10 @@ module.exports = {
             "plugins": ["@typescript-eslint"],
             "rules": {
                 "react/prop-types": "off",
+                // note you must disable the base rule as it can report incorrect errors
                 "no-unused-vars": "off",
-                "@typescript-eslint/no-unused-vars": [
-                    "error"
-                ]
+                // This rule extends the base eslint/no-unused-vars rule. It adds support for TypeScript features, such as types.
+                "@typescript-eslint/no-unused-vars": ["error"]
             }
         }
     ]

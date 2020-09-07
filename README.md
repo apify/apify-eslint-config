@@ -14,29 +14,29 @@ Add `.eslintrc` file:
 }
 ```
 
-Create `tsconfig.json` file in the root of the project and add:
 
+
+## To use typescript with eslint
+
+Create `tsconfig.json` file in the root of the project and add:
+```
+{}
+```
+List of all options https://www.typescriptlang.org/tsconfig
+
+Example setup (used on Web)
 ```json
 {
     "compilerOptions": {
-        "target": "es5",
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
-        ],
-        "allowJs": true,
+        // Skips typechecking of 3rd party libraries declaration files (extension .d.ts) since they may have different tsconfig
         "skipLibCheck": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
+        // Allows eg "import React from 'react'" instead of "import * as React from 'react'"
         "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
+        // Allows use of JSX tags
         "jsx": "preserve",
+        // Error on unused variables
         "noUnusedLocals": true,
+        // Error on unused function params
         "noUnusedParameters": true
     },
     "exclude": [
@@ -47,4 +47,9 @@ Create `tsconfig.json` file in the root of the project and add:
         "**/*.tsx"
     ]
 }
+```
+
+Edit eslint npm script to include .ts, .tsx files and to run typescript validation
+```json
+"eslint --ext .js,.jsx,.ts,.tsx ; tsc --noemit"
 ```
