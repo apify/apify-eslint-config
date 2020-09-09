@@ -17,6 +17,11 @@ Add `.eslintrc` file:
 
 
 ## To use typescript with eslint
+Install:
+
+```bash
+npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
+```
 
 Create `tsconfig.json` file in the root of the project and add:
 ```

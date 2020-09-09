@@ -53,10 +53,14 @@ module.exports = {
         ]
     },
     "settings": {
+        "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "import/parsers": {
+          "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
         "import/resolver": {
-            "typescript": {
-                "project": "./tsconfig.json"
-            }
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          }
         }
     },
     "overrides": [
@@ -64,7 +68,7 @@ module.exports = {
             "files": ["**/*.ts", "**/*.tsx"],
             "env": { "browser": true, "es6": true, "node": true },
             "extends": [
-                "eslint:recommended",
+                "airbnb-base",
                 "plugin:@typescript-eslint/eslint-recommended",
                 "plugin:@typescript-eslint/recommended"
             ],
