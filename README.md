@@ -3,7 +3,7 @@
 Install:
 
 ```bash
-npm install --save-dev @apify/eslint-config eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
+npm install --save-dev @apify/eslint-config eslint
 ```
 
 Add `.eslintrc` file:
@@ -29,7 +29,7 @@ Create `tsconfig.json` file in the root of the project and add:
 ```
 List of all options https://www.typescriptlang.org/tsconfig
 
-Example setup (used on Web)
+Example minimal setup (used on Web)
 ```json
 {
     "compilerOptions": {
