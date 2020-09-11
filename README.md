@@ -30,7 +30,7 @@ Create `tsconfig.json` file in the root of the project and add:
 List of all options https://www.typescriptlang.org/tsconfig
 
 Example minimal setup (used on Web)
-```json
+```js
 {
     "compilerOptions": {
         // Skips typechecking of 3rd party libraries declaration files (extension .d.ts) since they may have different tsconfig
