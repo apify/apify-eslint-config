@@ -1,7 +1,5 @@
 module.exports = {
-    "extends": [
-        "airbnb-base"
-    ],
+    "extends": ["airbnb-base"],
     "plugins": [
         "import"
     ],
@@ -32,58 +30,6 @@ module.exports = {
         "arrow-body-style": 0,
         "import/no-named-as-default": 0,
         "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
-        "no-prototype-builtins": 1,
-
-        //Listed extensions are not linted on import
-        //
-        // imports cannot have .ts and .tsx extensions as it is default typescript behavior which cannot be changed at the moment
-        // and therefore it is listed so it will not be linted by eslint
-        //
-        // Correct: import Component from "path/to/Component.jsx"
-        // Correct: import jsFile from "path/to/jsFile"
-        // Wrong: import jsFile from "path/to/jsFile.js"
-        "import/extensions": [
-            "error",
-            "ignorePackages",
-            {
-                "js": "never",
-                "ts": "never",
-                "tsx": "never"
-            }
-        ]
-    },
-    "settings": {
-        "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "import/parsers": {
-          "@typescript-eslint/parser": [".ts", ".tsx"]
-        },
-        "import/resolver": {
-          "node": {
-            "extensions": [".js", ".jsx", ".ts", ".tsx"]
-          }
-        }
-    },
-    "overrides": [
-        {
-            "files": ["**/*.ts", "**/*.tsx"],
-            "env": { "browser": true, "es6": true, "node": true },
-            "extends": [
-                "airbnb-base",
-                "plugin:@typescript-eslint/eslint-recommended",
-                "plugin:@typescript-eslint/recommended"
-            ],
-            "parser": "@typescript-eslint/parser",
-            "parserOptions": {
-                "project": "./tsconfig.json"
-            },
-            "plugins": ["@typescript-eslint"],
-            "rules": {
-                "react/prop-types": "off",
-                // note you must disable the base rule as it can report incorrect errors
-                "no-unused-vars": "off",
-                // This rule extends the base eslint/no-unused-vars rule. It adds support for TypeScript features, such as types.
-                "@typescript-eslint/no-unused-vars": ["error"]
-            }
-        }
-    ]
-}
+        "no-prototype-builtins": 1
+    }
+};
