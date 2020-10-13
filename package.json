@@ -1,6 +1,6 @@
 {
   "name": "@apify/eslint-config",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "ESLint configuration shared across projects in Apify.",
   "main": "index.js",
   "scripts": {
@@ -18,10 +18,7 @@
     "eslint-plugin-react-hooks": "^4.1.0"
   },
   "peerDependencies": {
-    "eslint": "*",
-    "@typescript-eslint/eslint-plugin": "^3.6.1",
-    "@typescript-eslint/parser": "^3.6.1",
-    "typescript": "^3.9.7"
+    "eslint": "*"
   },
   "author": "",
   "license": "ISC"
