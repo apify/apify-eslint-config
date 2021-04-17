@@ -31,6 +31,6 @@ module.exports = {
         "arrow-body-style": 0,
         "import/no-named-as-default": 0,
         "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
-        "no-prototype-builtins": 1
+        "no-prototype-builtins": 0
     }
 };
