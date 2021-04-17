@@ -19,6 +19,7 @@ module.exports = {
         "array-callback-return": 0,
         "no-plusplus": 0,
         "max-len": ["error", 150],
+        "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
         "func-names": 0,
         "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
         "import/prefer-default-export": 0,
