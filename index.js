@@ -35,6 +35,9 @@ module.exports = {
             "code": 160,
             "ignoreUrls": true
         }],
-        "no-continue": "off"
+        "no-continue": "off",
+        "function-paren-newline": 0,
+        "import/no-import-module-exports": 0,
+        "no-promise-executor-return": 0
     }
 };
