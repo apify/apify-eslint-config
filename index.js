@@ -38,6 +38,18 @@ module.exports = {
         "no-continue": "off",
         "function-paren-newline": 0,
         "import/no-import-module-exports": 0,
-        "no-promise-executor-return": 0
+        "no-promise-executor-return": 0,
+        "prefer-destructuring": ["error", {
+            "VariableDeclarator": {
+                "array": false,
+                "object": true,
+            },
+            "AssignmentExpression": {
+                "array": false,
+                "object": false,
+            }
+        }, {
+            "enforceForRenamedProperties": false,
+        }],
     }
 };
