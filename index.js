@@ -7,6 +7,9 @@ module.exports = {
         "node": true,
         "browser": true
     },
+    "parserOptions": {
+        "ecmaVersion": 2021,
+    },
     "rules": {
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "no-underscore-dangle": [2, {
