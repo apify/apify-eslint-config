@@ -10,6 +10,7 @@ module.exports = {
     "parserOptions": {
         "ecmaVersion": 2021,
     },
+    "reportUnusedDisableDirectives": true,
     "rules": {
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "no-underscore-dangle": [2, {
