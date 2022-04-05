@@ -55,5 +55,6 @@ module.exports = {
         }, {
             "enforceForRenamedProperties": false,
         }],
+        "no-return-await": 0, // So that the functions calling return show up in stack traces in case of an error
     }
 };
