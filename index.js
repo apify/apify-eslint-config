@@ -27,6 +27,7 @@ module.exports = {
         "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
         "import/prefer-default-export": 0,
         "import/no-unresolved": 0,
+        "import/extensions": ["error", "ignorePackages"],
         "class-methods-use-this": 0,
         "strict": 0,
         "object-curly-newline": 0,
