@@ -28,6 +28,11 @@ module.exports = {
         "import/prefer-default-export": 0,
         "import/no-unresolved": 0,
         "import/extensions": 0,
+        "import/order": ["error", {
+            "groups": ["builtin", "external", ["parent", "sibling"], "index", "object"],
+            "alphabetize": { "order": "asc", "caseInsensitive": true },
+            "newlines-between": "always",
+        }],
         "class-methods-use-this": 0,
         "strict": 0,
         "object-curly-newline": 0,
