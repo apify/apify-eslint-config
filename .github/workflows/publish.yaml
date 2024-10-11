@@ -1,0 +1,31 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: actions/checkout@v4
+      -
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+      -
+        name: Install Dependencies
+        run: npm install
+      -
+        name: Publish to NPM
+        run: NODE_AUTH_TOKEN=${{secrets.NPM_TOKEN}} npm publish --tag latest --access public
+      -
+        name: Tag Version
+        run: |
+          git_tag=v`node -p "require('./package.json').version"`
+          git tag $git_tag
+          git push origin $git_tag
