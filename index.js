@@ -71,13 +71,14 @@ module.exports = [...compat.extends('airbnb-base'),
                 },
                 'newlines-between': 'always',
             }],
+            'import/no-named-as-default': 'off',
+            'import/no-import-module-exports': 'off',
             'class-methods-use-this': 'off',
             strict: 'off',
             'object-curly-newline': 'off',
             // It's fine to use await in loops, e.g. for loop with awaits in it for sequential execution.
             'no-await-in-loop': 'off',
             'arrow-body-style': 'off',
-            'import/no-named-as-default': 'off',
             'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
             'no-prototype-builtins': 'off',
             'max-len': ['error', {
@@ -87,7 +88,6 @@ module.exports = [...compat.extends('airbnb-base'),
 
             'no-continue': 'off',
             'function-paren-newline': 'off',
-            'import/no-import-module-exports': 'off',
             'no-promise-executor-return': 'off',
             'prefer-destructuring': ['error', {
                 VariableDeclarator: {
@@ -110,7 +110,7 @@ module.exports = [...compat.extends('airbnb-base'),
         },
     },
     // Configuration for TypeScript files only.
-    ...tseslint.configs.recommended.map((conf) => ({ // Use the recommended TypeScript configuration.
+    ...typescriptEslint.configs.recommended.map((conf) => ({ // Use the recommended TypeScript configuration.
         ...conf,
 
         files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
