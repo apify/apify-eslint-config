@@ -1,8 +1,6 @@
 const globals = require('globals');
 const js = require('@eslint/js');
 const typescriptEslint = require('typescript-eslint');
-// const typescriptEslintPlugin = require('@typescript-eslint/eslint-plugin');
-// const typescriptEslintParser = require('@typescript-eslint/parser');
 
 const {
     FlatCompat,
@@ -110,11 +108,12 @@ module.exports = [...compat.extends('airbnb-base'),
         },
     },
     // Configuration for TypeScript files only.
-    ...typescriptEslint.configs.recommended.map((conf) => ({ // Use the recommended TypeScript configuration.
+    // Use the recommended TypeScript configs as a base, follow up with our overrides.
+    ...typescriptEslint.configs.recommended.map((conf) => ({
         ...conf,
 
         files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
-      })),
+    })),
     {
         files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
 
