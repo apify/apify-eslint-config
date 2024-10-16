@@ -17,6 +17,11 @@
     "@typescript-eslint/parser": "*",
     "eslint": "*"
   },
+  "overrides": {
+    "eslint-config-airbnb-base": {
+      "eslint": "^9"
+    }
+  },
   "author": "",
   "license": "ISC"
 }
