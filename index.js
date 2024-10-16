@@ -1,7 +1,8 @@
 const globals = require('globals');
 const js = require('@eslint/js');
-const typescriptEslintPlugin = require('@typescript-eslint/eslint-plugin');
-const typescriptEslintParser = require('@typescript-eslint/parser');
+const typescriptEslint = require('typescript-eslint');
+// const typescriptEslintPlugin = require('@typescript-eslint/eslint-plugin');
+// const typescriptEslintParser = require('@typescript-eslint/parser');
 
 const {
     FlatCompat,
@@ -73,6 +74,7 @@ module.exports = [...compat.extends('airbnb-base'),
             'class-methods-use-this': 'off',
             strict: 'off',
             'object-curly-newline': 'off',
+            // It's fine to use await in loops, e.g. for loop with awaits in it for sequential execution.
             'no-await-in-loop': 'off',
             'arrow-body-style': 'off',
             'import/no-named-as-default': 'off',
@@ -99,50 +101,64 @@ module.exports = [...compat.extends('airbnb-base'),
             }, {
                 enforceForRenamedProperties: false,
             }],
-            'no-return-await': 'off', // So that the functions calling return show up in stack traces in case of an error
+            // So that the functions calling return show up in stack traces in case of an error.
+            'no-return-await': 'off',
+            // Do not enforce newlines between class members if they have a single line.
+            'lines-between-class-members': ['error', 'always', {
+                exceptAfterSingleLine: true,
+            }],
         },
     },
     // Configuration for TypeScript files only.
+    ...tseslint.configs.recommended.map((conf) => ({ // Use the recommended TypeScript configuration.
+        ...conf,
+
+        files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
+      })),
     {
         files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
 
         plugins: {
-            '@typescript-eslint': typescriptEslintPlugin,
+            '@typescript-eslint': typescriptEslint.plugin,
         },
 
         languageOptions: {
-            parser: typescriptEslintParser,
+            parser: typescriptEslint.parser,
             ecmaVersion: 2022,
         },
 
         rules: {
-            'no-unused-vars': 'off',
+            // TypeScript doesn't support imports with `.ts` extensions, and `.js` makes the rule complain.
             'import/extensions': 'off',
-            '@typescript-eslint/no-unused-vars': ['error'],
+            // Allow semicolons at the end of the code block.
             '@typescript-eslint/no-extra-semi': 'off',
+            // Note: you must disable the base rule as it can report incorrect errors.
             'no-shadow': 'off',
+            // This rule extends the base eslint/no-shadow rule. It adds support for TypeScript's this parameters and global augmentation, and adds options for TypeScript features.
             '@typescript-eslint/no-shadow': ['error'],
             '@typescript-eslint/no-non-null-assertion': 'off',
+            // Note: you must disable the base rule as it can report incorrect errors.
             'no-useless-constructor': 'off',
+            // This rule extends the base eslint/no-useless-constructor rule for TypeScript.
             '@typescript-eslint/no-useless-constructor': 'error',
+            // Note: you must disable the base rule as it can report incorrect errors.
             'default-param-last': 'off',
+            // This rule extends the base eslint/default-param-last rule for TypeScript.
             '@typescript-eslint/default-param-last': 'error',
-
-            'lines-between-class-members': ['error', 'always', {
-                exceptAfterSingleLine: true,
-            }],
-
+            // Force promises to be awaited, returned, voided, .then()ed or .catch()ed.
             '@typescript-eslint/no-floating-promises': 'error',
+            // Disallow the use of promises in places where they shouldn't be used.
             '@typescript-eslint/await-thenable': 'error',
-
+            // Do not misuse promises in places like if conditions, or passing them to functions that don't handle promises.
             '@typescript-eslint/no-misused-promises': ['error', {
                 checksVoidReturn: {
                     arguments: false,
                     attributes: false,
                 },
             }],
-
+            // Require methods and fucnctions to be marked async if they return a Promise.
             '@typescript-eslint/promise-function-async': 'error',
+            // Force the usage of "import type" for type imports.
             '@typescript-eslint/consistent-type-imports': 'error',
         },
     },
