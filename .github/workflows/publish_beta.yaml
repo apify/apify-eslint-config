@@ -1,0 +1,26 @@
+name: Publish beta
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: actions/checkout@v4
+      -
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+      -
+        name: Install Dependencies
+        run: npm install
+      -
+        name: Bump version to beta
+        run: npm version --preid beta prerelease
+      -
+        name: Publish to NPM
+        run: NODE_AUTH_TOKEN=${{secrets.NPM_TOKEN}} npm publish --tag beta --access public
