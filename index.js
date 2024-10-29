@@ -45,48 +45,35 @@ module.exports = [...compat.extends('airbnb-base'),
                 ],
                 allowAfterThis: true,
             }],
-            'no-use-before-define': 'off',
-            'no-param-reassign': 'off',
-            'consistent-return': 'off',
-            'array-callback-return': 'off',
+            // ++ and -- are fine.
             'no-plusplus': 'off',
             quotes: ['error', 'single', {
                 avoidEscape: true,
                 allowTemplateLiterals: true,
             }],
+            // Disable as forcing names for function expression doesn't bring much value.
             'func-names': 'off',
-            'import/no-extraneous-dependencies': ['error', {
-                devDependencies: true,
-            }],
-            'import/prefer-default-export': 'off',
-            'import/no-unresolved': 'off',
-            'import/extensions': 'off',
-            'import/order': ['error', {
-                groups: ['builtin', 'external', ['parent', 'sibling'], 'index', 'object'],
-                alphabetize: {
-                    order: 'asc',
-                    caseInsensitive: true,
-                },
-                'newlines-between': 'always',
-            }],
-            'import/no-named-as-default': 'off',
-            'import/no-import-module-exports': 'off',
+            // Disable as this rule is overly strict and can cause breaking changes.
             'class-methods-use-this': 'off',
+            // Forcing "use strict" is not necessary.
             strict: 'off',
+            // We don't want to force newlines before and after curly braces.
             'object-curly-newline': 'off',
             // It's fine to use await in loops, e.g. for loop with awaits in it for sequential execution.
             'no-await-in-loop': 'off',
+            // It's fine to use continue in loops.
+            'no-continue': 'off',
             'arrow-body-style': 'off',
             'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
             'no-prototype-builtins': 'off',
+            // Set max line length to 160 characters.
             'max-len': ['error', {
                 code: 160,
                 ignoreUrls: true,
             }],
-
-            'no-continue': 'off',
+            // Allow less strict formatting of function parentheses.
             'function-paren-newline': 'off',
-            'no-promise-executor-return': 'off',
+            // Prefer destructuring for certain cases only. Forcing destructuring for arrays can make the code less readable.
             'prefer-destructuring': ['error', {
                 VariableDeclarator: {
                     array: false,
@@ -105,6 +92,27 @@ module.exports = [...compat.extends('airbnb-base'),
             'lines-between-class-members': ['error', 'always', {
                 exceptAfterSingleLine: true,
             }],
+
+            // Rules related to eslint-plugin-import.
+            // Force external modules to be specified in the package.json.
+            'import/no-extraneous-dependencies': ['error', {
+                devDependencies: true,
+            }],
+            // It's ok to not have a default export and we prefer named exports anyway.
+            'import/prefer-default-export': 'off',
+            'import/no-unresolved': 'off',
+            'import/extensions': 'off',
+            // Force ordering of imports.
+            'import/order': ['error', {
+                groups: ['builtin', 'external', ['parent', 'sibling'], 'index', 'object'],
+                alphabetize: {
+                    order: 'asc',
+                    caseInsensitive: true,
+                },
+                'newlines-between': 'always',
+            }],
+            'import/no-named-as-default': 'off',
+            'import/no-import-module-exports': 'off',
         },
     },
     // Configuration for TypeScript files only.
