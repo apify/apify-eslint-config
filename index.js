@@ -168,6 +168,20 @@ module.exports = [...compat.extends('airbnb-base'),
             '@typescript-eslint/promise-function-async': 'error',
             // Force the usage of "import type" for type imports.
             '@typescript-eslint/consistent-type-imports': 'error',
+            // Force consistent array type definitions.
+            '@typescript-eslint/array-type': 'error',
+            // Force better grouping of overloaded signatures.
+            '@typescript-eslint/adjacent-overload-signatures': 'error',
+            // Disallow "in" operator with arrays. It is better to use "of".
+            '@typescript-eslint/no-for-in-array': 'error',
+            // Avoid using eval().
+            '@typescript-eslint/no-implied-eval': 'error',
+            // Avoid type specifications that are not necessary.
+            '@typescript-eslint/no-inferrable-types': 'error',
+            // Disallow usage of non-null assertion "!" next to an assignment or equality check.
+            '@typescript-eslint/no-confusing-non-null-assertion': 'error',
+            // Prefer "includes()" over "indexOf() !== -1" when checking for existence.
+            '@typescript-eslint/prefer-includes': 'error',
         },
     },
 ];
