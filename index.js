@@ -143,6 +143,7 @@ module.exports = [...compat.extends('airbnb-base'),
             'no-shadow': 'off',
             // This rule extends the base eslint/no-shadow rule. It adds support for TypeScript's this parameters and global augmentation, and adds options for TypeScript features.
             '@typescript-eslint/no-shadow': ['error'],
+            // Not allowing non-null assertions is overly strict.
             '@typescript-eslint/no-non-null-assertion': 'off',
             // Note: you must disable the base rule as it can report incorrect errors.
             'no-useless-constructor': 'off',
