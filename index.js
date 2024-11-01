@@ -167,7 +167,7 @@ module.exports = [...compat.extends('airbnb-base'),
                     attributes: false,
                 },
             }],
-            // Require methods and fucnctions to be marked async if they return a Promise.
+            // Require methods and functions to be marked async if they return a Promise.
             '@typescript-eslint/promise-function-async': 'error',
             // Force the usage of "import type" for type imports.
             '@typescript-eslint/consistent-type-imports': 'error',
