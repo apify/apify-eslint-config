@@ -58,7 +58,7 @@ module.exports = [...compat.extends('airbnb-base'),
             // Forcing "use strict" is not necessary.
             strict: 'off',
             // We don't want to force newlines before and after curly braces.
-            'object-curly-newline': 'off',
+            'object-curly-newline': ['error', { 'consistent': true }],
             // It's fine to use await in loops, e.g. for loop with awaits in it for sequential execution.
             'no-await-in-loop': 'off',
             // It's fine to use continue in loops.
