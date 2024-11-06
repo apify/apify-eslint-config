@@ -65,7 +65,6 @@ module.exports = [...compat.extends('airbnb-base'),
             'no-continue': 'off',
             'arrow-body-style': 'off',
             'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
-            'no-prototype-builtins': 'off',
             // Set max line length to 160 characters.
             'max-len': ['error', {
                 code: 160,
@@ -103,7 +102,6 @@ module.exports = [...compat.extends('airbnb-base'),
             'import/no-default-export': 'error',
             // It's ok to not have a default export and we force named exports anyway.
             'import/prefer-default-export': 'off',
-            'import/no-unresolved': 'off',
             'import/extensions': 'off',
             // Force ordering of imports.
             'import/order': ['error', {
@@ -114,7 +112,6 @@ module.exports = [...compat.extends('airbnb-base'),
                 },
                 'newlines-between': 'always',
             }],
-            'import/no-named-as-default': 'off',
             'import/no-import-module-exports': 'off',
         },
     },
