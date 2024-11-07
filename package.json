@@ -16,6 +16,11 @@
     "typescript-eslint": "*",
     "eslint": "*"
   },
+  "peerDependenciesMeta": {
+    "typescript-eslint": {
+      "optional": true
+    }
+  },
   "overrides": {
     "eslint-config-airbnb-base": {
       "eslint": "^9"
