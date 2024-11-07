@@ -137,8 +137,6 @@ module.exports = [...compat.extends('airbnb-base'),
         rules: {
             // TypeScript doesn't support imports with `.ts` extensions, and `.js` makes the rule complain.
             'import/extensions': 'off',
-            // Allow semicolons at the end of the code block.
-            '@typescript-eslint/no-extra-semi': 'off',
             // Note: you must disable the base rule as it can report incorrect errors.
             'no-shadow': 'off',
             // This rule extends the base eslint/no-shadow rule. It adds support for TypeScript's this parameters and global augmentation, and adds options for TypeScript features.
