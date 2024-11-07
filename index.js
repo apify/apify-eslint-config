@@ -102,6 +102,7 @@ module.exports = [...compat.extends('airbnb-base'),
             'import/no-default-export': 'error',
             // It's ok to not have a default export and we force named exports anyway.
             'import/prefer-default-export': 'off',
+            'import/no-unresolved': 'off',
             'import/extensions': 'off',
             // Force ordering of imports.
             'import/order': ['error', {
