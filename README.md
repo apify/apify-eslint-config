@@ -1,4 +1,5 @@
 # apify-eslint-config
+
 This repository contains a shared eslint config used across Apify. It contains both JS and TS configs.
 
 ## How to add to your project
