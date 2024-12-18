@@ -110,9 +110,8 @@ module.exports = [...compat.extends('airbnb-base'),
             // It's ok to not have a default export and we force named exports anyway.
             'import/prefer-default-export': 'off',
             'import/no-unresolved': 'off',
-            // Force extensions for local imports. Ignore packages.
-            // Helps to prevent ESM issues.
-            'import/extensions': ['error', 'ignorePackages'],
+            // Force extensions for imports. Helps to prevent ESM issues.
+            'import/extensions': ['error', 'always'],
             // Force ordering of imports.
             'import/order': ['error', {
                 groups: ['builtin', 'external', ['parent', 'sibling'], 'index', 'object'],
