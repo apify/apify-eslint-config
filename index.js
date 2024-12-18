@@ -51,6 +51,13 @@ module.exports = [...compat.extends('airbnb-base'),
                 avoidEscape: true,
                 allowTemplateLiterals: true,
             }],
+            // It's ok to use functions before they are defined.
+            'no-use-before-define': ['error', {
+                'functions': false,
+                'classes': true,
+                'variables': true,
+                'allowNamedExports': false,
+            }],
             // Disable as forcing names for function expression doesn't bring much value.
             'func-names': 'off',
             // Disable as this rule is overly strict and can cause breaking changes.
@@ -103,7 +110,9 @@ module.exports = [...compat.extends('airbnb-base'),
             // It's ok to not have a default export and we force named exports anyway.
             'import/prefer-default-export': 'off',
             'import/no-unresolved': 'off',
-            'import/extensions': 'off',
+            // Force extensions for local imports. Ignore packages.
+            // Helps to prevent ESM issues.
+            'import/extensions': ['error', 'ignorePackages'],
             // Force ordering of imports.
             'import/order': ['error', {
                 groups: ['builtin', 'external', ['parent', 'sibling'], 'index', 'object'],
@@ -149,8 +158,6 @@ module.exports = [...compat.extends('airbnb-base'),
         },
 
         rules: {
-            // TypeScript doesn't support imports with `.ts` extensions, and `.js` makes the rule complain.
-            'import/extensions': 'off',
             // Note: you must disable the base rule as it can report incorrect errors.
             'no-shadow': 'off',
             // This rule extends the base eslint/no-shadow rule. It adds support for TypeScript's this parameters and global augmentation, and adds options for TypeScript features.
