@@ -1,10 +1,16 @@
 const globals = require('globals');
 const js = require('@eslint/js');
-const typescriptEslint = require('typescript-eslint');
-
 const {
     FlatCompat,
 } = require('@eslint/eslintrc');
+
+let typescriptEslint;
+try {
+    typescriptEslint = require('typescript-eslint');
+} catch {
+    // TypeScript ESLint is not installed.
+    typescriptEslint = null;
+}
 
 const compat = new FlatCompat({
     baseDirectory: __dirname,
@@ -129,6 +135,8 @@ module.exports = [...compat.extends('airbnb-base'),
             'import/no-import-module-exports': 'off',
         },
     },
+    // Conditionally add TypeScript rules if TypeScript ESLint is installed.
+    ...(typescriptEslint ? [
     // Configuration for TypeScript files only.
     // Use the recommended TypeScript configs as a base, follow up with our overrides.
     ...typescriptEslint.configs.recommended.map((conf) => ({
@@ -196,4 +204,5 @@ module.exports = [...compat.extends('airbnb-base'),
             '@typescript-eslint/prefer-includes': 'error',
         },
     },
+    ] : []),
 ];
