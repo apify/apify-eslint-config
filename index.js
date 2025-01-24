@@ -99,11 +99,14 @@ module.exports = [...compat.extends('airbnb-base'),
             'lines-between-class-members': ['error', 'always', {
                 exceptAfterSingleLine: true,
             }],
+            // Allow to use underscore as a way to ignore unused args.
+            "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
 
             // Rules related to eslint-plugin-import.
             // Force external modules to be specified in the package.json.
             'import/no-extraneous-dependencies': ['error', {
-                devDependencies: true,
+                // Allow devDependencies in test files and folders.
+                devDependencies: ['**/*.test.*', '**/test/**', '**/tests/**'],
             }],
             // Force the use of named exports.
             'import/no-default-export': 'error',
@@ -200,6 +203,8 @@ module.exports = [...compat.extends('airbnb-base'),
             '@typescript-eslint/no-confusing-non-null-assertion': 'error',
             // Prefer "includes()" over "indexOf() !== -1" when checking for existence.
             '@typescript-eslint/prefer-includes': 'error',
+            // Allow to use underscore as a way to ignore unused args.
+            "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
         },
     },
 ];
