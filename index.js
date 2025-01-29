@@ -22,6 +22,7 @@ module.exports = [...compat.extends('airbnb-base'),
             globals: {
                 ...globals.node,
                 ...globals.browser,
+                ...globals.jest,
             },
 
             ecmaVersion: 2022,
@@ -106,7 +107,7 @@ module.exports = [...compat.extends('airbnb-base'),
             // Force external modules to be specified in the package.json.
             'import/no-extraneous-dependencies': ['error', {
                 // Allow devDependencies in test files and folders.
-                devDependencies: ['**/*.test.*', '**/test/**', '**/tests/**'],
+                devDependencies: ['**/*.test.*', '**/test/**', '**/tests/**', 'eslint.config.mjs'],
             }],
             // Force the use of named exports.
             'import/no-default-export': 'error',
@@ -205,6 +206,14 @@ module.exports = [...compat.extends('airbnb-base'),
             '@typescript-eslint/prefer-includes': 'error',
             // Allow to use underscore as a way to ignore unused args.
             "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+        },
+    },
+    // Allow default exports in Jest config files.
+    {
+        files: ['**/jest.config.js'],
+
+        rules: {
+            'import/no-default-export': 'off',
         },
     },
 ];
