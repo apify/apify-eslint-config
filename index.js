@@ -210,7 +210,7 @@ module.exports = [...compat.extends('airbnb-base'),
     },
     // Allow default exports in Jest config files.
     {
-        files: ['**/jest.config.js'],
+        files: ['**/jest.config.{js,ts}'],
 
         rules: {
             'import/no-default-export': 'off',
