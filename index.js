@@ -99,8 +99,8 @@ module.exports = [...compat.extends('airbnb-base'),
             'lines-between-class-members': ['error', 'always', {
                 exceptAfterSingleLine: true,
             }],
-            // Allow to use underscore as a way to ignore unused args.
-            "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+            // Allow to use underscore as a way to ignore unused args. Allow unused vars from destructuring.
+            "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "ignoreRestSiblings": true }],
 
             // Rules related to eslint-plugin-import.
             // Force external modules to be specified in the package.json.
