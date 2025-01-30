@@ -1,6 +1,7 @@
 const globals = require('globals');
 const js = require('@eslint/js');
 const typescriptEslint = require('typescript-eslint');
+const pluginJest = require('eslint-plugin-jest');
 
 const {
     FlatCompat,
@@ -17,12 +18,10 @@ module.exports = [...compat.extends('airbnb-base'),
         linterOptions: {
             reportUnusedDisableDirectives: true,
         },
-
         languageOptions: {
             globals: {
                 ...globals.node,
                 ...globals.browser,
-                ...globals.jest,
             },
 
             ecmaVersion: 2022,
@@ -216,4 +215,14 @@ module.exports = [...compat.extends('airbnb-base'),
             'import/no-default-export': 'off',
         },
     },
+    {
+        files: ['**/*.spec.{js,ts}', '**/*.test.{js,ts}'],
+        ...pluginJest.configs['flat/recommended'],
+        languageOptions: {
+            globals: pluginJest.environments.globals.globals,
+          },
+          rules: {
+            ...pluginJest.configs['flat/recommended'].rules
+          },
+    }
 ];
