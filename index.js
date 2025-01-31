@@ -1,7 +1,6 @@
 const globals = require('globals');
 const js = require('@eslint/js');
 const typescriptEslint = require('typescript-eslint');
-const pluginJest = require('eslint-plugin-jest');
 
 const {
     FlatCompat,
@@ -207,22 +206,4 @@ module.exports = [...compat.extends('airbnb-base'),
             "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
         },
     },
-    // Allow default exports in Jest config files.
-    {
-        files: ['**/jest.config.{js,ts}', '**/jest.config.shared.{js,ts}'],
-
-        rules: {
-            'import/no-default-export': 'off',
-        },
-    },
-    {
-        files: ['**/*.spec.{js,ts}', '**/*.test.{js,ts}'],
-        ...pluginJest.configs['flat/recommended'],
-        languageOptions: {
-            globals: pluginJest.environments.globals.globals,
-          },
-          rules: {
-            ...pluginJest.configs['flat/recommended'].rules
-          },
-    }
 ];
