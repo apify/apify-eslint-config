@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "exports": {
+    ".": "./index.js",
+    "./ts": "./ts.js",
+    "./jest": "./jest.js"
+  },
   "dependencies": {
     "@eslint/compat": "^1.2.2",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -13,11 +18,15 @@
     "globals": "^15.11.0"
   },
   "peerDependencies": {
+    "eslint": "^9.0.0",
     "typescript-eslint": "^8.0.0",
-    "eslint": "^9.0.0"
+    "eslint-plugin-jest": "^28.11.0"
   },
   "peerDependenciesMeta": {
     "typescript-eslint": {
+      "optional": true
+    },
+    "eslint-plugin-jest": {
       "optional": true
     }
   },
