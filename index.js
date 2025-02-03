@@ -19,8 +19,6 @@ module.exports = [...compat.extends('airbnb-base'),
                 ...globals.node,
                 ...globals.browser,
             },
-
-            ecmaVersion: 2022,
         },
 
         rules: {
@@ -96,13 +94,13 @@ module.exports = [...compat.extends('airbnb-base'),
                 exceptAfterSingleLine: true,
             }],
             // Allow to use underscore as a way to ignore unused args. Allow unused vars from destructuring.
-            "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "ignoreRestSiblings": true }],
+            'no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'ignoreRestSiblings': true }],
 
             // Rules related to eslint-plugin-import.
             // Force external modules to be specified in the package.json.
             'import/no-extraneous-dependencies': ['error', {
                 // Allow devDependencies in test files and folders.
-                devDependencies: ['**/*.test.*', '**/test/**', '**/tests/**'],
+                devDependencies: ['**/*.spec.*', '**/*.test.*', '**/test/**', '**/tests/**'],
             }],
             // Force the use of named exports.
             'import/no-default-export': 'error',

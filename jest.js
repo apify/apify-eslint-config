@@ -3,13 +3,13 @@ const pluginJest = require('eslint-plugin-jest');
 // Configuration for Jest test files only.
 module.exports = [
     {
-        files: ['**/*.spec.{js,ts}', '**/*.test.{js,ts}'],
+        files: ['**/*.spec.*', '**/*.test.*', '**/test/**', '**/tests/**'],
         ...pluginJest.configs['flat/recommended'],
-        languageOptions: {
-            globals: pluginJest.environments.globals.globals,
-          },
-          rules: {
-            ...pluginJest.configs['flat/recommended'].rules
-          },
+        rules: {
+            // Force at least one expect() in each test.
+            'jest/expect-expect': 'error',
+            // Disallow disabled tests.
+            'jest/no-disabled-tests': 'error',
+        }
     },
 ];

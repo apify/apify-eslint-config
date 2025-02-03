@@ -1,8 +1,11 @@
+const jsConfig = require('./index.js');
 const typescriptEslint = require('typescript-eslint');
 
-// Configuration for TypeScript files only.
-// Use the recommended TypeScript configs as a base, follow up with our overrides.
+// Configuration that extends the JavaScript config with TypeScript rules.
 module.exports = [
+    // Include our base JavaScript config.
+    ...jsConfig,
+    // Use the recommended TypeScript configs as a base, follow up with our overrides.
     ...typescriptEslint.configs.recommended.map((conf) => ({
         ...conf,
 
@@ -65,7 +68,7 @@ module.exports = [
             // Prefer "includes()" over "indexOf() !== -1" when checking for existence.
             '@typescript-eslint/prefer-includes': 'error',
             // Allow to use underscore as a way to ignore unused args.
-            "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+            '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'ignoreRestSiblings': true }],
         },
     },
 ];
