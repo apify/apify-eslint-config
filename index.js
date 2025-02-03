@@ -13,7 +13,6 @@ module.exports = [...compat.extends('airbnb-base'),
         linterOptions: {
             reportUnusedDisableDirectives: true,
         },
-
         languageOptions: {
             globals: {
                 ...globals.node,
@@ -101,8 +100,8 @@ module.exports = [...compat.extends('airbnb-base'),
             // Rules related to eslint-plugin-import.
             // Force external modules to be specified in the package.json.
             'import/no-extraneous-dependencies': ['error', {
-                // Allow devDependencies in test files and folders.
-                devDependencies: ['**/*.spec.*', '**/*.test.*', '**/test/**', '**/tests/**'],
+                // Allow devDependencies in test files and folders. Also in eslint config files.
+                devDependencies: ['**/*.spec.*', '**/*.test.*', '**/test/**', '**/tests/**', 'eslint.config.{mjs,js,cjs,ts,mts,cts}'],
             }],
             // Force the use of named exports.
             'import/no-default-export': 'error',
