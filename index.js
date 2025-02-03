@@ -203,7 +203,7 @@ module.exports = [...compat.extends('airbnb-base'),
             // Prefer "includes()" over "indexOf() !== -1" when checking for existence.
             '@typescript-eslint/prefer-includes': 'error',
             // Allow to use underscore as a way to ignore unused args.
-            "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+            "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_", "ignoreRestSiblings": true }]
         },
     },
 ];
