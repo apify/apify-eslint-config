@@ -9,8 +9,11 @@
   "exports": {
     ".": "./index.js",
     "./js": "./index.js",
+    "./js.js": "./index.js",
     "./ts": "./ts.js",
-    "./jest": "./jest.js"
+    "./ts.js": "./ts.js",
+    "./jest": "./jest.js",
+    "./jest.js": "./jest.js"
   },
   "dependencies": {
     "@eslint/compat": "^1.2.2",

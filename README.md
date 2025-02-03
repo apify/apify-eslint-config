@@ -1,6 +1,9 @@
 # apify-eslint-config
 
-This repository contains a shared eslint config used across [Apify](https://apify.com/). The default export contains the JavaScript config. You can also access [TypeScript](https://www.npmjs.com/package/typescript) config via `@apify/eslint-config/ts` and [Jest](https://www.npmjs.com/package/jest) config via `@apify/eslint-config/jest`.
+This repository contains a shared eslint config used across [Apify](https://apify.com/). It offers several configs:
+- JavaScript config `@apify/eslint-config/js`
+- [TypeScript](https://www.npmjs.com/package/typescript) config that also includes JavaScript config `@apify/eslint-config/ts`
+- [Jest](https://www.npmjs.com/package/jest) config that only applies to test files and folders `@apify/eslint-config/jest`
 
 ## How to add to your project
 
@@ -12,18 +15,16 @@ npm install --save-dev @apify/eslint-config eslint
 
 Optionally, you can install `typescript-eslint` or `eslint-plugin-jest` if you intend to use [TypeScript](https://www.npmjs.com/package/typescript) or [Jest](https://www.npmjs.com/package/jest).
 
-Add `eslint.config.js` file, here's an example configuration for a TypeScript project using ESM:
+Add `eslint.config.js` file, here's an example configuration for a TypeScript project using ESM and Jest for tests:
 
 ```js
-import apify from '@apify/eslint-config';
+import apifyTypescriptConfig from '@apify/eslint-config/ts';
 // Optional
-import apifyTypescript from '@apify/eslint-config/ts';
-import apifyJest from '@apify/eslint-config/jest';
+import apifyJestConfig from '@apify/eslint-config/jest';
 
 export default [
-    ...apify,
-    ...apifyTypescript,
-    ...apifyJest,
+    ...apifyTypescriptConfig,
+    ...apifyJestConfig,
     {
         languageOptions: {
             sourceType: 'module',
@@ -33,6 +34,16 @@ export default [
             },
         },
     },
+];
+
+```
+
+An example configuration for a JavaScript project using CommonJS without Jest:
+```js
+const apifyJsConfig = require('@apify/eslint-config/js');
+
+module.exports = [
+    ...apifyJsConfig,
 ];
 
 ```

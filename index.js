@@ -19,6 +19,8 @@ module.exports = [...compat.extends('airbnb-base'),
                 ...globals.node,
                 ...globals.browser,
             },
+
+            ecmaVersion: 'latest',
         },
 
         rules: {
