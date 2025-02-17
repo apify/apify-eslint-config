@@ -70,8 +70,8 @@ module.exports = [
             // Allow to use underscore as a way to ignore unused args.
             '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'ignoreRestSiblings': true }],
             // Use TS extension of np-empty-function, e.g. allow to use empty constructors with parameter properties.
-            "no-empty-function": "off",
-            "@typescript-eslint/no-empty-function": "error",
+            'no-empty-function': 'off',
+            '@typescript-eslint/no-empty-function': 'error',
         },
     },
 ];
