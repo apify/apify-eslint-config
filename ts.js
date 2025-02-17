@@ -71,7 +71,7 @@ module.exports = [
             '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'ignoreRestSiblings': true }],
             // Use TS extension of np-empty-function, e.g. allow to use empty constructors with parameter properties.
             "no-empty-function": "off",
-            "@typescript-eslint/no-empty-function": "error"
+            "@typescript-eslint/no-empty-function": "error",
         },
     },
 ];
