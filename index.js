@@ -67,6 +67,8 @@ module.exports = [...compat.extends('airbnb-base'),
             'no-continue': 'off',
             'arrow-body-style': 'off',
             'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
+            // It's fine to use empty constructors (e.g. using parameter properties).
+            'no-empty-function': ['error', { allow: ['constructors'] }],
             // Set max line length to 160 characters.
             'max-len': ['error', {
                 code: 160,
