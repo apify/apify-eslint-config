@@ -67,8 +67,6 @@ module.exports = [...compat.extends('airbnb-base'),
             'no-continue': 'off',
             'arrow-body-style': 'off',
             'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
-            // It's fine to use empty constructors (e.g. using parameter properties).
-            'no-empty-function': ['error', { allow: ['constructors'] }],
             // Set max line length to 160 characters.
             'max-len': ['error', {
                 code: 160,
@@ -98,6 +96,8 @@ module.exports = [...compat.extends('airbnb-base'),
             }],
             // Allow to use underscore as a way to ignore unused args. Allow unused vars from destructuring.
             'no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'ignoreRestSiblings': true }],
+            // It's fine to use empty constructors (e.g. using parameter properties).
+            'no-empty-function': ['error', { allow: ['constructors'] }],
 
             // Rules related to eslint-plugin-import.
             // Force external modules to be specified in the package.json.
