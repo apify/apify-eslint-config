@@ -1,6 +1,8 @@
 const { FlatCompat } = require('@eslint/eslintrc');
 const js = require('@eslint/js');
 const globals = require('globals');
+const simpleImportSort = require('eslint-plugin-simple-import-sort');
+const importFixed = require('@jirimoravcik/eslint-plugin-import');
 
 const compat = new FlatCompat({
     baseDirectory: __dirname,
@@ -20,6 +22,11 @@ module.exports = [...compat.extends('airbnb-base'),
             },
 
             ecmaVersion: 'latest',
+        },
+
+        plugins: {
+            'simple-import-sort': simpleImportSort,
+            'import-fixed': importFixed,
         },
 
         rules: {
@@ -110,27 +117,26 @@ module.exports = [...compat.extends('airbnb-base'),
             'import/no-unresolved': 'off',
             // Force extensions for imports. Helps to prevent ESM issues.
             'import/extensions': ['error', 'always'],
+            // Enforce the use of "node:" prefix for Node.js built-in modules.
+            'import-fixed/enforce-node-protocol-usage': ['error', 'always'],
             // Force ordering of imports.
-            'import/order': ['error', {
-                groups: ['builtin', 'external', ['parent', 'sibling'], 'index', 'object'],
-                alphabetize: {
-                    order: 'asc',
-                    caseInsensitive: true,
-                },
-                'newlines-between': 'always',
-                pathGroups: [
-                    {
-                        pattern: '@apify/**',
-                        group: 'external',
-                        position: 'after',
-                    },
-                    {
-                        pattern: '@apify-packages/**',
-                        group: 'external',
-                        position: 'after',
-                    },
+            'import/order': 'off',
+            'simple-import-sort/imports': ['error', {
+                groups: [
+                    // Side effect imports.
+                    ["^\\u0000"],
+                    // Node.js builtins prefixed with `node:`.
+                    ["^node:"],
+                    // Anything not matched in another group.
+                    ["^"],
+                    // Public Apify packages.
+                    ["^@apify/"],
+                    // Private Apify packages.
+                    ["^@apify-packages/"],
+                    // Relative imports.
+                    // Anything that starts with a dot.
+                    ["^\\."],
                 ],
-                pathGroupsExcludedImportTypes: ['builtin'],
             }],
             'import/no-import-module-exports': 'off',
         },
