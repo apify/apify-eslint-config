@@ -2,8 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-<!-- git-cliff-unreleased-start -->
-## 0.5.0 - **not yet released**
+## [1.0.0](https://github.com/apify/apify-eslint-config/releases/tag/v1.0.0) (2025-03-20)
 
 ### 🚀 Features
 
@@ -18,5 +17,4 @@ All notable changes to this project will be documented in this file.
 - Allow unused vars from destructuring ([#22](https://github.com/apify/apify-eslint-config/pull/22)) ([1bba8df](https://github.com/apify/apify-eslint-config/commit/1bba8dfb3c660e5ae0a6b19bce29cec20d18052c)) by [@B4nan](https://github.com/B4nan)
 
 
-<!-- git-cliff-unreleased-end -->
 # Changelog

@@ -1,6 +1,6 @@
 {
   "name": "@apify/eslint-config",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "ESLint configuration shared across projects in Apify.",
   "main": "index.js",
   "scripts": {
