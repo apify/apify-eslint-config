@@ -124,18 +124,18 @@ module.exports = [...compat.extends('airbnb-base'),
             'simple-import-sort/imports': ['error', {
                 groups: [
                     // Side effect imports.
-                    ["^\\u0000"],
+                    ['^\\u0000'],
                     // Node.js builtins prefixed with `node:`.
-                    ["^node:"],
+                    ['^node:'],
                     // Anything not matched in another group.
-                    ["^"],
+                    ['^'],
                     // Public Apify packages.
-                    ["^@apify/"],
+                    ['^@apify/'],
                     // Private Apify packages.
-                    ["^@apify-packages/"],
+                    ['^@apify-packages/'],
                     // Relative imports.
                     // Anything that starts with a dot.
-                    ["^\\."],
+                    ['^\\.'],
                 ],
             }],
             'import/no-import-module-exports': 'off',
