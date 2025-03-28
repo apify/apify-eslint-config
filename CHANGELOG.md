@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+<!-- git-cliff-unreleased-start -->
+## 1.1.0 - **not yet released**
+
+### 🚀 Features
+
+- Force extensions for type imports ([#28](https://github.com/apify/apify-eslint-config/pull/28)) ([81c8436](https://github.com/apify/apify-eslint-config/commit/81c84365f1dc7ae1b5ba372bca7804a7897abe62)) by [@jirimoravcik](https://github.com/jirimoravcik)
+
+
+<!-- git-cliff-unreleased-end -->
 ## [1.0.0](https://github.com/apify/apify-eslint-config/releases/tag/v1.0.0) (2025-03-20)
 
 ### 🚀 Features
