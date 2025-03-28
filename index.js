@@ -116,7 +116,10 @@ module.exports = [...compat.extends('airbnb-base'),
             'import/prefer-default-export': 'off',
             'import/no-unresolved': 'off',
             // Force extensions for imports. Helps to prevent ESM issues.
-            'import/extensions': ['error', 'always'],
+            'import/extensions': ['error', 'always', {
+                // Force extensions for type imports as well to be consistent.
+                checkTypeImports: true,
+            }],
             // Enforce the use of "node:" prefix for Node.js built-in modules.
             'import-fixed/enforce-node-protocol-usage': ['error', 'always'],
             // Force ordering of imports.
