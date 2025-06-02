@@ -72,6 +72,8 @@ module.exports = [...compat.extends('airbnb-base'),
             'no-await-in-loop': 'off',
             // It's fine to use continue in loops.
             'no-continue': 'off',
+            // It's fine to use "void" to explicitly indicate that we're not awaiting a promise.
+            'no-void': ['error', { allowAsStatement: true }],
             'arrow-body-style': 'off',
             'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
             // Set max line length to 160 characters.
@@ -115,10 +117,20 @@ module.exports = [...compat.extends('airbnb-base'),
             // It's ok to not have a default export and we force named exports anyway.
             'import/prefer-default-export': 'off',
             'import/no-unresolved': 'off',
+            'import/extensions': 'off',
             // Force extensions for imports. Helps to prevent ESM issues.
-            'import/extensions': ['error', 'always', {
+            'import-fixed/extensions': ['error', 'never', {
                 // Force extensions for type imports as well to be consistent.
                 checkTypeImports: true,
+                pattern: {
+                    'js': 'always',
+                },
+                // pathGroupOverrides: [
+                //     {
+                //         pattern: '{.,..,**}/*.{js,jsx,mjs,cjs}',
+                //         action: 'ignore',
+                //     }
+                // ]
             }],
             // Enforce the use of "node:" prefix for Node.js built-in modules.
             'import-fixed/enforce-node-protocol-usage': ['error', 'always'],
