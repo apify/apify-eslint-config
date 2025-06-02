@@ -72,6 +72,8 @@ module.exports = [...compat.extends('airbnb-base'),
             'no-await-in-loop': 'off',
             // It's fine to use continue in loops.
             'no-continue': 'off',
+            // It's fine to use "void" to explicitly indicate that we're not awaiting a promise.
+            'no-void': ['error', { allowAsStatement: true }],
             'arrow-body-style': 'off',
             'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
             // Set max line length to 160 characters.
