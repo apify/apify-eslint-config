@@ -117,20 +117,10 @@ module.exports = [...compat.extends('airbnb-base'),
             // It's ok to not have a default export and we force named exports anyway.
             'import/prefer-default-export': 'off',
             'import/no-unresolved': 'off',
-            'import/extensions': 'off',
             // Force extensions for imports. Helps to prevent ESM issues.
-            'import-fixed/extensions': ['error', 'never', {
+            'import/extensions': ['error', 'always', {
                 // Force extensions for type imports as well to be consistent.
                 checkTypeImports: true,
-                pattern: {
-                    'js': 'always',
-                },
-                // pathGroupOverrides: [
-                //     {
-                //         pattern: '{.,..,**}/*.{js,jsx,mjs,cjs}',
-                //         action: 'ignore',
-                //     }
-                // ]
             }],
             // Enforce the use of "node:" prefix for Node.js built-in modules.
             'import-fixed/enforce-node-protocol-usage': ['error', 'always'],
