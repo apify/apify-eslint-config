@@ -72,6 +72,8 @@ module.exports = [
             // Use TS extension of no-empty-function, e.g. allow to use empty constructors with parameter properties.
             'no-empty-function': 'off',
             '@typescript-eslint/no-empty-function': 'error',
+            // Disable the "import/named" rule for TypeScript files, as suggested by the authors of the plugin.
+            'import/named': 'off',
         },
     },
 ];
