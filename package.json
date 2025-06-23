@@ -17,9 +17,8 @@
   },
   "dependencies": {
     "@eslint/compat": "^1.2.6",
-    "@jirimoravcik/eslint-plugin-import": "2.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.14.0"
   },
