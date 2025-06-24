@@ -2,7 +2,6 @@ const { FlatCompat } = require('@eslint/eslintrc');
 const js = require('@eslint/js');
 const globals = require('globals');
 const simpleImportSort = require('eslint-plugin-simple-import-sort');
-const importFixed = require('@jirimoravcik/eslint-plugin-import');
 
 const compat = new FlatCompat({
     baseDirectory: __dirname,
@@ -26,7 +25,6 @@ module.exports = [...compat.extends('airbnb-base'),
 
         plugins: {
             'simple-import-sort': simpleImportSort,
-            'import-fixed': importFixed,
         },
 
         rules: {
@@ -123,7 +121,7 @@ module.exports = [...compat.extends('airbnb-base'),
                 checkTypeImports: true,
             }],
             // Enforce the use of "node:" prefix for Node.js built-in modules.
-            'import-fixed/enforce-node-protocol-usage': ['error', 'always'],
+            'import/enforce-node-protocol-usage': ['error', 'always'],
             // Force ordering of imports.
             'import/order': 'off',
             'simple-import-sort/imports': ['error', {
