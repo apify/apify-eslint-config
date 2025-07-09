@@ -45,6 +45,8 @@ module.exports = [...compat.extends('airbnb-base'),
                 ],
                 allowAfterThis: true,
             }],
+            // Error on console usage to prevent accidental debug logging in production code.
+            'no-console': 'error',
             // ++ and -- are fine.
             'no-plusplus': 'off',
             quotes: ['error', 'single', {
