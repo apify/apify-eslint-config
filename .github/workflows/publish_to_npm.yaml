@@ -87,11 +87,23 @@ jobs:
         id: git-cliff-release-notes
         uses: orhun/git-cliff-action@v4
         with:
-          args: --current --strip header
+          args: --current --strip all
+      
+      - name: Format release notes
+        id: format-release-notes
+        run: |
+          # Git cliff outputs the version at the top, we don't need that in the release notes.
+          # We can simply skip the first two lines and then trim any leading/trailing whitespace.
+          FORMATTED_RELEASE_NOTES=$(echo "${{ steps.git-cliff-release-notes.outputs.content }}" | tail -n +3 | sed '/^$/d')
+          {
+            echo "formatted_release_notes<<EOF"
+            echo "$FORMATTED_RELEASE_NOTES"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: "v${{ steps.get_version.outputs.VERSION }}"
           name: "v${{ steps.get_version.outputs.VERSION }}"
-          body: ${{ steps.git-cliff.outputs.content }}
+          body: ${{ steps.format-release-notes.outputs.formatted_release_notes }}
