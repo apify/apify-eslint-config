@@ -1,0 +1,88 @@
+name: "Publish to NPM"
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'Version bump'
+        required: true
+        type: choice
+        default: 'patch'
+        options:
+          - 'major'
+          - 'minor'
+          - 'patch'
+          - 'none' # Use 'none' to just publish the current version without bumping, useful if version is set manually.
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Check if branch is `master`
+      #   if: github.ref != 'refs/heads/master'
+      #   run: |
+      #     echo "This workflow can only be run on the master branch."
+      #     exit 1
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.APIFY_SERVICE_ACCOUNT_GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Bump version
+        if: ${{ inputs.bump != 'none' }}
+        run: npm version ${{ inputs.bump }} --no-git-tag-version
+        
+      - name: Get current version
+        id: get_version
+        run: echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      
+      # We need to create a commit and tag for the new version so that git-cliff can
+      # get the current version to generate the changelog.
+      - name: Commit version bump
+        run: |
+          # Add a newline to CHANGELOG.md so that there is always a change to commit, even if the version was bumped manually before.
+          # CHANGELOG.md will be regenerated later with git-cliff, so this is a noop.
+          echo "" >> CHANGELOG.md
+          git config user.name "Apify Release Bot"
+          git config user.email "noreply@apify.com"
+          git add .
+          git commit -m "chore(release): Release new version [skip ci]"
+          git tag "v${{ steps.get_version.outputs.VERSION }}"
+        
+      - name: Generate changelog
+        id: git-cliff
+        uses: orhun/git-cliff-action@v4
+        env:
+          OUTPUT: CHANGELOG.md
+        
+      - name: Amend commit with changelog
+        run: |
+          git add CHANGELOG.md
+          git commit --amend --no-edit
+
+      # - name: Publish to NPM
+      #   run: npm publish
+      
+      - name: Push changes
+        run: git push --tags
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ steps.get_version.outputs.VERSION }}"
+          name: "v${{ steps.get_version.outputs.VERSION }}"
+          body: ${{ steps.git-cliff.outputs.content }}
