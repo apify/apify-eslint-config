@@ -1,30 +1,130 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## 1.2.0 - 2025-12-05
 
-## [1.1.0](https://github.com/apify/apify-eslint-config/releases/tag/v1.1.0) (2025-07-10)
+### Features
+- Test release notes generation
 
+### Bug Fixes
+- Fix release notes format
+- Fix changelog formatting
+- More fixes
+- Don't cache NPM
+- Fix release notes formatting
+- Fix missing quote
 
-## [1.1.0](https://github.com/apify/apify-eslint-config/releases/tag/v1.1.0) (2025-06-08)
-
-### 🚀 Features
-
-- Force extensions for type imports ([#28](https://github.com/apify/apify-eslint-config/pull/28)) ([81c8436](https://github.com/apify/apify-eslint-config/commit/81c84365f1dc7ae1b5ba372bca7804a7897abe62)) by [@jirimoravcik](https://github.com/jirimoravcik)
-
-
-## [1.0.0](https://github.com/apify/apify-eslint-config/releases/tag/v1.0.0) (2025-03-20)
-
-### 🚀 Features
-
-- [**breaking**] Flat config + v9 support, rule unification, add TS config ([#14](https://github.com/apify/apify-eslint-config/pull/14)) ([e09b4e7](https://github.com/apify/apify-eslint-config/commit/e09b4e7e5da78e7c92d7a645e6a28d0e4326e5c8)) by [@jirimoravcik](https://github.com/jirimoravcik)
-- Allow _ args to be unused, stricter devDeps check ([#21](https://github.com/apify/apify-eslint-config/pull/21)) ([e4d2c7e](https://github.com/apify/apify-eslint-config/commit/e4d2c7ef8e8368ec7f4ea0b66481582a735ab6b5)) by [@jirimoravcik](https://github.com/jirimoravcik)
-- Split config into subpath exports ([#24](https://github.com/apify/apify-eslint-config/pull/24)) ([4a4464b](https://github.com/apify/apify-eslint-config/commit/4a4464ba177a0344079e413bd5bd9f7cab11a92d)) by [@jirimoravcik](https://github.com/jirimoravcik)
-- Allow empty constructors ([#26](https://github.com/apify/apify-eslint-config/pull/26)) ([e32c608](https://github.com/apify/apify-eslint-config/commit/e32c6084ec204daa652034c4c34f25f1f8f68efd)) by [@MFori](https://github.com/MFori)
-- Improve import sorting, add `node:` prefix ([#27](https://github.com/apify/apify-eslint-config/pull/27)) ([77d0c7c](https://github.com/apify/apify-eslint-config/commit/77d0c7c8f7efe60d0219334ca0e67b8bb006b18f)) by [@jirimoravcik](https://github.com/jirimoravcik)
-
-### 🐛 Bug Fixes
-
-- Allow unused vars from destructuring ([#22](https://github.com/apify/apify-eslint-config/pull/22)) ([1bba8df](https://github.com/apify/apify-eslint-config/commit/1bba8dfb3c660e5ae0a6b19bce29cec20d18052c)) by [@B4nan](https://github.com/B4nan)
+### Chores
+- Update `eslint-plugin-import` (#31)
+- `error` for `no-console` rule (#33)
+- Testing
+- Fix tag generation
 
 
-# Changelog
+## 1.1.0 - 2025-06-08
+
+### Features
+- Force extensions for type imports (#28)
+
+### Chores
+- Allow `void` for statements (#29)
+- Disable `import/named` for TypeScript files (#30)
+
+
+## 1.0.0 - 2025-03-20
+
+### Features
+- Flat config + v9 support, rule unification, add TS config (#14)
+- Allow _ args to be unused, stricter devDeps check (#21)
+- Split config into subpath exports (#24)
+- Allow empty constructors (#26)
+- Improve import sorting, add `node:` prefix (#27)
+
+### Bug Fixes
+- Allow unused vars from destructuring (#22)
+
+### Chores
+- Add CI action to publish a beta version (#15)
+- Add changelog (#16)
+- Use `npm install` instead of `npm ci` (#17)
+- Add path groups for apify and apify-packages (#18)
+- Enable `import/extensions`, relax `no-use-before-define` (#20)
+- Allow devDependencies in eslint.config.mjs (#23)
+
+
+## 0.4.0 - 2023-07-21
+
+### Features
+- Enable alphabetize for imports (#13)
+
+
+## 0.3.4 - 2023-06-06
+
+### Bug Fixes
+- Turn off import/extensions completely
+
+
+## 0.3.3 - 2023-05-25
+
+### Bug Fixes
+- Ignore package extensions that prevent imports
+
+### Chores
+- Bump version
+
+
+## 0.3.2 - 2023-05-25
+
+### Bug Fixes
+- Bump parser version to allow top level await (#11)
+
+
+## 0.3.0 - 2022-03-29
+
+### Features
+- Add `reportUnusedDisableDirectives: true` (#8)
+
+
+## 0.2.4 - 2022-03-21
+
+### Features
+- Bump `ecmaVersion` to 2021 to allow optional chaining (#7)
+
+### Chores
+- Bump version
+
+
+## 0.2.3 - 2022-03-15
+
+### Chores
+- Disable `prefer-destructuring` for arrays (#6)
+
+
+## 0.2.2 - 2021-11-15
+
+### Chores
+- Disable eslint-plugin-promise plugin
+
+
+## 0.2.1 - 2021-11-15
+
+### Chores
+- Disable some rules to remove BCs
+
+
+## 0.2.0 - 2021-11-15
+
+### Chores
+- Update versions + disable `no-continue` rule
+
+
+## 0.1.4 - 2021-04-17
+
+### Bug Fixes
+- Wrong prototype builtin rule, bump version
+
+
+## 0.0.1 - 2019-07-29
+
+Initial release.
+
+
