@@ -74,6 +74,8 @@ jobs:
         run: |
           git add CHANGELOG.md
           git commit --amend --no-edit
+          # Move the tag to point to the amended commit
+          git tag -f "v${{ steps.get_version.outputs.VERSION }}"
 
       # - name: Publish to NPM
       #   run: npm publish
