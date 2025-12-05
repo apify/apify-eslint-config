@@ -96,11 +96,11 @@ jobs:
         run: |
           # Git cliff outputs the version at the top, we don't need that in the release notes.
           # We can simply skip the first two lines and then trim any leading/trailing whitespace.
-          FORMATTED_RELEASE_NOTES=$(echo '$UNFORMATTED_RELEASE_NOTES' | tail -n +3 | sed '/^$/d')
+          FORMATTED_RELEASE_NOTES=$(echo "${UNFORMATTED_RELEASE_NOTES} | tail -n +3 | sed '/^$/d')
           {
-            echo 'formatted_release_notes<<EOF'
-            echo '${FORMATTED_RELEASE_NOTES}'
-            echo 'EOF'
+            echo "formatted_release_notes<<EOF"
+            echo "${FORMATTED_RELEASE_NOTES}"
+            echo "EOF"
           } >> $GITHUB_OUTPUT
 
       - name: Create release
