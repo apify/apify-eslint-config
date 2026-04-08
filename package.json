@@ -13,7 +13,9 @@
     "./ts": "./ts.js",
     "./ts.js": "./ts.js",
     "./jest": "./jest.js",
-    "./jest.js": "./jest.js"
+    "./jest.js": "./jest.js",
+    "./style": "./style.js",
+    "./style.js": "./style.js"
   },
   "dependencies": {
     "eslint-plugin-import": "^2.32.0",
@@ -21,11 +23,15 @@
     "globals": "^15.14.0"
   },
   "peerDependencies": {
+    "@stylistic/eslint-plugin": "^5.0.0",
     "eslint": "^9.19.0",
     "eslint-plugin-jest": "^28.11.0",
     "typescript-eslint": "^8.23.0"
   },
   "peerDependenciesMeta": {
+    "@stylistic/eslint-plugin": {
+      "optional": true
+    },
     "typescript-eslint": {
       "optional": true
     },
@@ -34,5 +40,8 @@
     }
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.10.0"
+  }
 }
