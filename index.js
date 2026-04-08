@@ -1,15 +1,11 @@
-const { FlatCompat } = require('@eslint/eslintrc');
 const js = require('@eslint/js');
 const globals = require('globals');
+const pluginImport = require('eslint-plugin-import');
 const simpleImportSort = require('eslint-plugin-simple-import-sort');
 
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
-});
-
-module.exports = [...compat.extends('airbnb-base'),
+module.exports = [
+    js.configs.recommended,
+    pluginImport.flatConfigs.recommended,
     {
         linterOptions: {
             reportUnusedDisableDirectives: true,
@@ -21,6 +17,7 @@ module.exports = [...compat.extends('airbnb-base'),
             },
 
             ecmaVersion: 'latest',
+            sourceType: 'module',
         },
 
         plugins: {

@@ -16,8 +16,6 @@
     "./jest.js": "./jest.js"
   },
   "dependencies": {
-    "@eslint/compat": "^1.2.6",
-    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.14.0"
@@ -33,11 +31,6 @@
     },
     "eslint-plugin-jest": {
       "optional": true
-    }
-  },
-  "overrides": {
-    "eslint-config-airbnb-base": {
-      "eslint": "^9"
     }
   },
   "author": "",
