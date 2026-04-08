@@ -172,14 +172,16 @@ module.exports = [
             'symbol-description': 'error',
 
             // ─── Imports ───────────────────────────────────────────────────
-            // These two `import/recommended` rules are notoriously noisy in
-            // TypeScript codebases (false positives on namespace re-exports
-            // and on libs whose default exports overlap with their named
-            // exports — `zod`, `async`, etc.). Match airbnb's effective
-            // behavior, which had them declared as `error` but they were
-            // silently no-op because of how FlatCompat loaded the plugin.
+            // These `import/recommended` rules are notoriously noisy in
+            // TypeScript codebases — false positives on namespace re-exports,
+            // on libs whose default and named exports overlap (`zod`,
+            // `async`, etc.), and on computed property access against
+            // imported namespaces. Match airbnb's effective behavior, which
+            // had them declared as `error` but they were silently no-op
+            // because of how FlatCompat loaded the plugin.
             'import/no-named-as-default': 'off',
             'import/no-named-as-default-member': 'off',
+            'import/namespace': 'off',
             // All imports must come before any other statements.
             'import/first': 'error',
             // No circular imports.
