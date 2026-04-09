@@ -2,6 +2,9 @@
   "name": "@apify/eslint-config",
   "version": "1.1.0",
   "description": "ESLint configuration shared across projects in Apify.",
+  "repository": {
+    "url": "https://github.com/apify/apify-eslint-config"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
