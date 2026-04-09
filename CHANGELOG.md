@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0 - 2026-04-09
+
+### Features
+- Drop unmaintained eslint-config-airbnb-base (#35)
+
+
 ## 1.2.0 - 2026-04-09
 
 ### Features
