@@ -42,7 +42,19 @@ module.exports = [
             '@stylistic/arrow-spacing': ['error',{before:true,after:true}],
             '@stylistic/block-spacing': ['error','always'],
             '@stylistic/brace-style': ['error','1tbs',{allowSingleLine:true}],
-            '@stylistic/comma-dangle': ['error',{arrays:'always-multiline',objects:'always-multiline',imports:'always-multiline',exports:'always-multiline',functions:'always-multiline'}],
+            '@stylistic/comma-dangle': ['error', {
+                arrays: 'always-multiline',
+                objects: 'always-multiline',
+                imports: 'always-multiline',
+                exports: 'always-multiline',
+                functions: 'always-multiline',
+                // TS-specific extensions — without these, generic type parameter
+                // lists and enum bodies default to "never", which is inconsistent
+                // with the rest of the multiline-trailing-comma convention.
+                enums: 'always-multiline',
+                generics: 'always-multiline',
+                tuples: 'always-multiline',
+            }],
             '@stylistic/comma-spacing': ['error',{before:false,after:true}],
             '@stylistic/comma-style': ['error','last',{exceptions:{ArrayExpression:false,ArrayPattern:false,ArrowFunctionExpression:false,CallExpression:false,FunctionDeclaration:false,FunctionExpression:false,ImportDeclaration:false,ObjectExpression:false,ObjectPattern:false,VariableDeclaration:false,NewExpression:false}}],
             '@stylistic/computed-property-spacing': ['error','never'],
