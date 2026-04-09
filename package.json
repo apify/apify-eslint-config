@@ -13,7 +13,9 @@
     "./ts": "./ts.js",
     "./ts.js": "./ts.js",
     "./jest": "./jest.js",
-    "./jest.js": "./jest.js"
+    "./jest.js": "./jest.js",
+    "./vitest": "./vitest.js",
+    "./vitest.js": "./vitest.js"
   },
   "dependencies": {
     "@eslint/compat": "^1.2.6",
@@ -23,11 +25,15 @@
     "globals": "^15.14.0"
   },
   "peerDependencies": {
+    "@vitest/eslint-plugin": "^1.6.14",
     "eslint": "^9.19.0",
     "eslint-plugin-jest": "^28.11.0",
     "typescript-eslint": "^8.23.0"
   },
   "peerDependenciesMeta": {
+    "@vitest/eslint-plugin": {
+      "optional": true
+    },
     "typescript-eslint": {
       "optional": true
     },
