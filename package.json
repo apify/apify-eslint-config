@@ -1,7 +1,10 @@
 {
   "name": "@apify/eslint-config",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ESLint configuration shared across projects in Apify.",
+  "repository": {
+    "url": "https://github.com/apify/apify-eslint-config"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,6 +17,8 @@
     "./ts.js": "./ts.js",
     "./jest": "./jest.js",
     "./jest.js": "./jest.js",
+    "./vitest": "./vitest.js",
+    "./vitest.js": "./vitest.js",
     "./style": "./style.js",
     "./style.js": "./style.js"
   },
@@ -24,12 +29,16 @@
   },
   "peerDependencies": {
     "@stylistic/eslint-plugin": "^5.0.0",
+    "@vitest/eslint-plugin": "^1.6.14",
     "eslint": "^9.19.0",
     "eslint-plugin-jest": "^28.11.0",
     "typescript-eslint": "^8.23.0"
   },
   "peerDependenciesMeta": {
     "@stylistic/eslint-plugin": {
+      "optional": true
+    },
+    "@vitest/eslint-plugin": {
       "optional": true
     },
     "typescript-eslint": {
