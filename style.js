@@ -27,6 +27,16 @@ module.exports = [
         },
 
         rules: {
+            // Disable the legacy eslint stylistic rules that this config replaces
+            // with their `@stylistic/*` equivalents — otherwise both fire on the same
+            // code with different opinions and produce circular fixes.
+            indent: 'off',
+            quotes: 'off',
+            'max-len': 'off',
+            'object-curly-newline': 'off',
+            'lines-between-class-members': 'off',
+            'function-paren-newline': 'off',
+
             '@stylistic/array-bracket-spacing': ['error','never'],
             '@stylistic/arrow-parens': ['error','always'],
             '@stylistic/arrow-spacing': ['error',{before:true,after:true}],
@@ -40,15 +50,17 @@ module.exports = [
             '@stylistic/eol-last': ['error','always'],
             '@stylistic/function-call-spacing': ['error','never'],
             '@stylistic/function-call-argument-newline': ['error','consistent'],
-            '@stylistic/function-paren-newline': ['error','multiline-arguments'],
+            '@stylistic/function-paren-newline': 'off',
             '@stylistic/generator-star-spacing': ['error',{before:false,after:true}],
             '@stylistic/implicit-arrow-linebreak': ['error','beside'],
-            '@stylistic/indent': ['error',2,{SwitchCase:1,VariableDeclarator:1,outerIIFEBody:1,FunctionDeclaration:{parameters:1,body:1},FunctionExpression:{parameters:1,body:1},CallExpression:{arguments:1},ArrayExpression:1,ObjectExpression:1,ImportDeclaration:1,flatTernaryExpressions:false,ignoredNodes:['JSXElement','JSXElement > *','JSXAttribute','JSXIdentifier','JSXNamespacedName','JSXMemberExpression','JSXSpreadAttribute','JSXExpressionContainer','JSXOpeningElement','JSXClosingElement','JSXFragment','JSXOpeningFragment','JSXClosingFragment','JSXText','JSXEmptyExpression','JSXSpreadChild'],ignoreComments:false}],
+            // Apify projects use 4 spaces, not airbnb's 2 — preserved from
+            // the legacy `indent` rule in `index.js`.
+            '@stylistic/indent': ['error', 4, { SwitchCase: 1 }],
             '@stylistic/key-spacing': ['error',{beforeColon:false,afterColon:true}],
             '@stylistic/keyword-spacing': ['error',{before:true,after:true,overrides:{return:{after:true},throw:{after:true},case:{after:true}}}],
             '@stylistic/linebreak-style': ['error','unix'],
-            '@stylistic/lines-between-class-members': ['error','always',{exceptAfterSingleLine:false}],
-            '@stylistic/max-len': ['error',100,2,{ignoreUrls:true,ignoreComments:false,ignoreRegExpLiterals:true,ignoreStrings:true,ignoreTemplateLiterals:true}],
+            '@stylistic/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
+            '@stylistic/max-len': ['error', { code: 160, ignoreUrls: true, ignoreTemplateLiterals: true }],
             '@stylistic/new-parens': 'error',
             '@stylistic/newline-per-chained-call': ['error',{ignoreChainWithDepth:4}],
             '@stylistic/no-confusing-arrow': ['error',{allowParens:true}],
@@ -62,14 +74,14 @@ module.exports = [
             '@stylistic/no-trailing-spaces': ['error',{skipBlankLines:false,ignoreComments:false}],
             '@stylistic/no-whitespace-before-property': 'error',
             '@stylistic/nonblock-statement-body-position': ['error','beside',{overrides:{}}],
-            '@stylistic/object-curly-newline': ['error',{ObjectExpression:{minProperties:4,multiline:true,consistent:true},ObjectPattern:{minProperties:4,multiline:true,consistent:true},ImportDeclaration:{minProperties:4,multiline:true,consistent:true},ExportDeclaration:{minProperties:4,multiline:true,consistent:true}}],
+            '@stylistic/object-curly-newline': ['error', { consistent: true }],
             '@stylistic/object-curly-spacing': ['error','always'],
             '@stylistic/object-property-newline': ['error',{allowAllPropertiesOnSameLine:true}],
             '@stylistic/one-var-declaration-per-line': ['error','always'],
             '@stylistic/operator-linebreak': ['error','before',{overrides:{'=':'none'}}],
             '@stylistic/padded-blocks': ['error',{blocks:'never',classes:'never',switches:'never'},{allowSingleLineBlocks:true}],
             '@stylistic/quote-props': ['error','as-needed',{keywords:false,unnecessary:true,numbers:false}],
-            '@stylistic/quotes': ['error','single',{avoidEscape:true}],
+            '@stylistic/quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
             '@stylistic/rest-spread-spacing': ['error','never'],
             '@stylistic/semi': ['error','always'],
             '@stylistic/semi-spacing': ['error',{before:false,after:true}],
