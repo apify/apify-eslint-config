@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.2 - 2026-04-09
+
+### Bug Fixes
+- Enable trailing-comma enforcement on TS generics, enums, tuples (#38)
+
+
 ## 2.0.1 - 2026-04-09
 
 ### Bug Fixes
