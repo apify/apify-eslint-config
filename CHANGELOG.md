@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1 - 2026-04-09
+
+### Bug Fixes
+- Align with apify base config preferences (#37)
+
+
 ## 2.0.0 - 2026-04-09
 
 ### Features
