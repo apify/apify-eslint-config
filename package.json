@@ -18,22 +18,26 @@
     "./jest": "./jest.js",
     "./jest.js": "./jest.js",
     "./vitest": "./vitest.js",
-    "./vitest.js": "./vitest.js"
+    "./vitest.js": "./vitest.js",
+    "./style": "./style.js",
+    "./style.js": "./style.js"
   },
   "dependencies": {
-    "@eslint/compat": "^1.2.6",
-    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.14.0"
   },
   "peerDependencies": {
+    "@stylistic/eslint-plugin": "^5.0.0",
     "@vitest/eslint-plugin": "^1.6.14",
     "eslint": "^9.19.0",
     "eslint-plugin-jest": "^28.11.0",
     "typescript-eslint": "^8.23.0"
   },
   "peerDependenciesMeta": {
+    "@stylistic/eslint-plugin": {
+      "optional": true
+    },
     "@vitest/eslint-plugin": {
       "optional": true
     },
@@ -44,11 +48,9 @@
       "optional": true
     }
   },
-  "overrides": {
-    "eslint-config-airbnb-base": {
-      "eslint": "^9"
-    }
-  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.10.0"
+  }
 }

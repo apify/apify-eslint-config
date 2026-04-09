@@ -1,15 +1,11 @@
-const { FlatCompat } = require('@eslint/eslintrc');
 const js = require('@eslint/js');
 const globals = require('globals');
+const pluginImport = require('eslint-plugin-import');
 const simpleImportSort = require('eslint-plugin-simple-import-sort');
 
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
-});
-
-module.exports = [...compat.extends('airbnb-base'),
+module.exports = [
+    js.configs.recommended,
+    pluginImport.flatConfigs.recommended,
     {
         linterOptions: {
             reportUnusedDisableDirectives: true,
@@ -21,6 +17,7 @@ module.exports = [...compat.extends('airbnb-base'),
             },
 
             ecmaVersion: 'latest',
+            sourceType: 'module',
         },
 
         plugins: {
@@ -28,6 +25,181 @@ module.exports = [...compat.extends('airbnb-base'),
         },
 
         rules: {
+            // ─── Modern JS / hygiene ───────────────────────────────────────
+            // Always require strict equality (with the exception of `== null`).
+            eqeqeq: ['error', 'always', { null: 'ignore' }],
+            // No `var` — use `let` / `const`.
+            'no-var': 'error',
+            // Prefer `const` for variables that are never reassigned.
+            'prefer-const': ['error', { destructuring: 'any', ignoreReadBeforeAssign: true }],
+            // Prefer template literals over string concatenation.
+            'prefer-template': 'error',
+            // Prefer arrow functions for callbacks.
+            'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
+            // Use rest parameters instead of `arguments`.
+            'prefer-rest-params': 'error',
+            // Use spread instead of `.apply()`.
+            'prefer-spread': 'error',
+            // Use object spread instead of `Object.assign({}, ...)`.
+            'prefer-object-spread': 'error',
+            // Use `0b`, `0o`, `0x` literals instead of `parseInt('...', 2/8/16)`.
+            'prefer-numeric-literals': 'error',
+            // Use `**` instead of `Math.pow`.
+            'prefer-exponentiation-operator': 'error',
+            // Use shorthand object property/method syntax.
+            'object-shorthand': ['error', 'always', { ignoreConstructors: false, avoidQuotes: true }],
+            // No `{ foo: foo }` renames or `import { foo as foo }`.
+            'no-useless-rename': 'error',
+            // No `{ ['foo']: 1 }`.
+            'no-useless-computed-key': 'error',
+            // No `'a' + 'b'`.
+            'no-useless-concat': 'error',
+            // No `return;` at the end of a function.
+            'no-useless-return': 'error',
+            // Use `Object.{create,assign}` instead of `new Object()`.
+            'no-object-constructor': 'error',
+            // No `new Array()`.
+            'no-array-constructor': 'error',
+
+            // ─── Defensive / bug-catching ──────────────────────────────────
+            // Don't reassign function parameters; mutating their props is allowed for common
+            // accumulator/context names.
+            'no-param-reassign': ['error', {
+                props: true,
+                ignorePropertyModificationsFor: [
+                    'acc', 'accumulator', 'e', 'ctx', 'context', 'req', 'request', 'res', 'response',
+                ],
+            }],
+            // Either always return a value or never. Catches accidentally falling through.
+            'consistent-return': 'error',
+            // Require a `default` case in `switch` (or a `// no default` comment).
+            'default-case': ['error', { commentPattern: '^no default$' }],
+            // `default` must be the last case.
+            'default-case-last': 'error',
+            // Require explicit radix for `parseInt`.
+            radix: 'error',
+            // Throw `Error` instances, not strings.
+            'no-throw-literal': 'error',
+            // No assignment in `return` (`return x = 1;`).
+            'no-return-assign': ['error', 'always'],
+            // No expressions used as statements (e.g. `foo && bar();`).
+            'no-unused-expressions': ['error', {
+                allowShortCircuit: false,
+                allowTernary: false,
+                allowTaggedTemplates: false,
+            }],
+            // No variable shadowing — TS files override this in ts.js with the typescript-eslint version.
+            'no-shadow': 'error',
+            // Array methods like `.map()`, `.filter()`, `.reduce()` must return a value from the callback.
+            'array-callback-return': ['error', { allowImplicit: true }],
+            // No `return` from a Promise executor function.
+            'no-promise-executor-return': 'error',
+            // No `${...}` in plain (non-template) strings — usually a typo.
+            'no-template-curly-in-string': 'error',
+            // No functions declared inside loops that capture loop variables.
+            'no-loop-func': 'error',
+            // No `return` from a constructor.
+            'no-constructor-return': 'error',
+            // No `new` for side effects only.
+            'no-new': 'error',
+            // No `new String()`, `new Number()`, `new Boolean()`.
+            'no-new-wrappers': 'error',
+            // No `x === x`.
+            'no-self-compare': 'error',
+            // No comma operator (`return (a, b)`).
+            'no-sequences': 'error',
+            // No `a ? a : b` (use `a || b`).
+            'no-unneeded-ternary': ['error', { defaultAssignment: false }],
+            // No nested ternaries.
+            'no-nested-ternary': 'error',
+            // No `else { if (...) }` — use `else if`.
+            'no-lonely-if': 'error',
+            // No `a = b = c`.
+            'no-multi-assign': 'error',
+            // No `else { return ... }` after `if { return ... }`.
+            'no-else-return': ['error', { allowElseIf: false }],
+            // Empty function bodies — TS files override this in ts.js to allow empty methods.
+            'no-empty-function': ['error', { allow: ['arrowFunctions', 'functions', 'methods'] }],
+            // `Promise.reject()` should reject with an `Error`.
+            'prefer-promise-reject-errors': ['error', { allowEmptyReject: true }],
+            // No vars referenced before they're declared inside their block.
+            'block-scoped-var': 'error',
+            // No `var x; if (...) { x = 1; }` style (though `no-var` handles most of this).
+            'vars-on-top': 'error',
+            // Default parameters must come last — TS files override this in ts.js with the typescript-eslint version.
+            'default-param-last': 'error',
+            // Prefer `/abc/` over `new RegExp('abc')` when the pattern is static.
+            'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
+            // Constructors must be PascalCase, non-constructors must not.
+            'new-cap': ['error', { newIsCap: true, capIsNew: false }],
+            // Getter/setter pairs should be defined together.
+            'grouped-accessor-pairs': 'error',
+
+            // ─── Security ──────────────────────────────────────────────────
+            'no-eval': 'error',
+            'no-implied-eval': 'error',
+            'no-new-func': 'error',
+            'no-script-url': 'error',
+            'no-proto': 'error',
+            'no-extend-native': 'error',
+            'no-caller': 'error',
+            'no-iterator': 'error',
+
+            // ─── Quality / readability ─────────────────────────────────────
+            // Prefer `obj.foo` over `obj['foo']` when possible.
+            'dot-notation': ['error', { allowKeywords: true }],
+            // Require a guard (`hasOwnProperty` etc.) inside `for...in`.
+            'guard-for-in': 'error',
+            // No `alert()` / `confirm()` / `prompt()` — useful even server-side as a typo catch.
+            'no-alert': 'warn',
+            // No bitwise operators (almost always a typo for `&&` / `||`).
+            'no-bitwise': 'error',
+            // No labeled statements.
+            'no-labels': ['error', { allowLoop: false, allowSwitch: false }],
+            // Restrict the legacy `isFinite` / `isNaN` globals — use the `Number.*` versions.
+            'no-restricted-globals': [
+                'error',
+                { name: 'isFinite', message: 'Use Number.isFinite instead.' },
+                { name: 'isNaN', message: 'Use Number.isNaN instead.' },
+            ],
+            // No multiline strings via `\` — use template literals.
+            'no-multi-str': 'error',
+            // No `'\8'` / `'\9'` octal escapes.
+            'no-octal-escape': 'error',
+            // `let foo = undefined;` → `let foo;`.
+            'no-undef-init': 'error',
+            // Symbols should have a description for debugging.
+            'symbol-description': 'error',
+
+            // ─── Imports ───────────────────────────────────────────────────
+            // These `import/recommended` rules are notoriously noisy in
+            // TypeScript codebases — false positives on namespace re-exports,
+            // on libs whose default and named exports overlap (`zod`,
+            // `async`, etc.), and on computed property access against
+            // imported namespaces. Match airbnb's effective behavior, which
+            // had them declared as `error` but they were silently no-op
+            // because of how FlatCompat loaded the plugin.
+            'import/no-named-as-default': 'off',
+            'import/no-named-as-default-member': 'off',
+            'import/namespace': 'off',
+            // All imports must come before any other statements.
+            'import/first': 'error',
+            // No circular imports.
+            'import/no-cycle': ['error', { maxDepth: '∞' }],
+            // No importing yourself.
+            'import/no-self-import': 'error',
+            // Exported `let` / `var` is almost always a mistake.
+            'import/no-mutable-exports': 'error',
+            // No `./../../foo` if you can write `../foo`.
+            'import/no-useless-path-segments': ['error', { commonjs: true }],
+            // No `import '/abs/path'`.
+            'import/no-absolute-path': 'error',
+            // No `require(variable)`.
+            'import/no-dynamic-require': 'error',
+            // Require a blank line after the import block.
+            'import/newline-after-import': 'error',
+
+            // ─── Apify-specific overrides (existing) ───────────────────────
             indent: ['error', 4, {
                 SwitchCase: 1,
             }],
