@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.3 - 2026-04-09
+
+### Features
+- Switch to eslint-plugin-import-x and allow ESLint 10 (#39)
+
+
 ## 2.0.2 - 2026-04-09
 
 ### Bug Fixes

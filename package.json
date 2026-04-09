@@ -1,6 +1,6 @@
 {
   "name": "@apify/eslint-config",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "ESLint configuration shared across projects in Apify.",
   "repository": {
     "url": "https://github.com/apify/apify-eslint-config"
