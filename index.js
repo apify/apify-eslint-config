@@ -1,11 +1,11 @@
 const js = require('@eslint/js');
 const globals = require('globals');
-const pluginImport = require('eslint-plugin-import');
+const pluginImportX = require('eslint-plugin-import-x');
 const simpleImportSort = require('eslint-plugin-simple-import-sort');
 
 module.exports = [
     js.configs.recommended,
-    pluginImport.flatConfigs.recommended,
+    pluginImportX.flatConfigs.recommended,
     {
         linterOptions: {
             reportUnusedDisableDirectives: true,
@@ -172,32 +172,32 @@ module.exports = [
             'symbol-description': 'error',
 
             // ─── Imports ───────────────────────────────────────────────────
-            // These `import/recommended` rules are notoriously noisy in
+            // These `import-x/recommended` rules are notoriously noisy in
             // TypeScript codebases — false positives on namespace re-exports,
             // on libs whose default and named exports overlap (`zod`,
             // `async`, etc.), and on computed property access against
             // imported namespaces. Match airbnb's effective behavior, which
             // had them declared as `error` but they were silently no-op
             // because of how FlatCompat loaded the plugin.
-            'import/no-named-as-default': 'off',
-            'import/no-named-as-default-member': 'off',
-            'import/namespace': 'off',
+            'import-x/no-named-as-default': 'off',
+            'import-x/no-named-as-default-member': 'off',
+            'import-x/namespace': 'off',
             // All imports must come before any other statements.
-            'import/first': 'error',
+            'import-x/first': 'error',
             // No circular imports.
-            'import/no-cycle': ['error', { maxDepth: '∞' }],
+            'import-x/no-cycle': ['error', { maxDepth: '∞' }],
             // No importing yourself.
-            'import/no-self-import': 'error',
+            'import-x/no-self-import': 'error',
             // Exported `let` / `var` is almost always a mistake.
-            'import/no-mutable-exports': 'error',
+            'import-x/no-mutable-exports': 'error',
             // No `./../../foo` if you can write `../foo`.
-            'import/no-useless-path-segments': ['error', { commonjs: true }],
+            'import-x/no-useless-path-segments': ['error', { commonjs: true }],
             // No `import '/abs/path'`.
-            'import/no-absolute-path': 'error',
+            'import-x/no-absolute-path': 'error',
             // No `require(variable)`.
-            'import/no-dynamic-require': 'error',
+            'import-x/no-dynamic-require': 'error',
             // Require a blank line after the import block.
-            'import/newline-after-import': 'error',
+            'import-x/newline-after-import': 'error',
 
             // ─── Apify-specific overrides (existing) ───────────────────────
             indent: ['error', 4, {
@@ -223,6 +223,9 @@ module.exports = [
             'no-plusplus': 'off',
             quotes: ['error', 'single', {
                 avoidEscape: true,
+                // The core ESLint `quotes` rule schema still requires a boolean here;
+                // only `@stylistic/quotes` (in `style.js`) accepts the newer
+                // 'always'/'never' string form.
                 allowTemplateLiterals: true,
             }],
             // It's ok to use functions before they are defined.
@@ -278,26 +281,29 @@ module.exports = [
             // Allow to use underscore as a way to ignore unused args. Allow unused vars from destructuring.
             'no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'ignoreRestSiblings': true }],
 
-            // Rules related to eslint-plugin-import.
+            // Rules related to eslint-plugin-import-x.
             // Force external modules to be specified in the package.json.
-            'import/no-extraneous-dependencies': ['error', {
+            'import-x/no-extraneous-dependencies': ['error', {
                 // Allow devDependencies in test files and folders. Also in eslint config files.
                 devDependencies: ['**/*.spec.*', '**/*.test.*', '**/test/**', '**/tests/**', 'eslint.config.{mjs,js,cjs,ts,mts,cts}'],
             }],
             // Force the use of named exports.
-            'import/no-default-export': 'error',
+            'import-x/no-default-export': 'error',
             // It's ok to not have a default export and we force named exports anyway.
-            'import/prefer-default-export': 'off',
-            'import/no-unresolved': 'off',
+            'import-x/prefer-default-export': 'off',
+            'import-x/no-unresolved': 'off',
             // Force extensions for imports. Helps to prevent ESM issues.
-            'import/extensions': ['error', 'always', {
+            'import-x/extensions': ['error', 'always', {
                 // Force extensions for type imports as well to be consistent.
                 checkTypeImports: true,
             }],
-            // Enforce the use of "node:" prefix for Node.js built-in modules.
-            'import/enforce-node-protocol-usage': ['error', 'always'],
+            // Note: `enforce-node-protocol-usage` (the rule from `eslint-plugin-import`)
+            // is intentionally not configured here — `eslint-plugin-import-x` does not port
+            // it (see un-ts/eslint-plugin-import-x#200). Consumers who want this check
+            // should add `eslint-plugin-unicorn` and enable `unicorn/prefer-node-protocol`,
+            // or `eslint-plugin-n` and enable `n/prefer-node-protocol`.
             // Force ordering of imports.
-            'import/order': 'off',
+            'import-x/order': 'off',
             'simple-import-sort/imports': ['error', {
                 groups: [
                     // Side effect imports.
@@ -315,7 +321,7 @@ module.exports = [
                     ['^\\.'],
                 ],
             }],
-            'import/no-import-module-exports': 'off',
+            'import-x/no-import-module-exports': 'off',
         },
     },
 ];

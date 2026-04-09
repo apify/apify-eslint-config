@@ -93,7 +93,7 @@ module.exports = [
             '@stylistic/operator-linebreak': ['error','before',{overrides:{'=':'none'}}],
             '@stylistic/padded-blocks': ['error',{blocks:'never',classes:'never',switches:'never'},{allowSingleLineBlocks:true}],
             '@stylistic/quote-props': ['error','as-needed',{keywords:false,unnecessary:true,numbers:false}],
-            '@stylistic/quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+            '@stylistic/quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: 'always' }],
             '@stylistic/rest-spread-spacing': ['error','never'],
             '@stylistic/semi': ['error','always'],
             '@stylistic/semi-spacing': ['error',{before:false,after:true}],

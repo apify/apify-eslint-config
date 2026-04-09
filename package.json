@@ -23,14 +23,15 @@
     "./style.js": "./style.js"
   },
   "dependencies": {
-    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.14.0"
   },
   "peerDependencies": {
+    "@eslint/js": "^9.19.0 || ^10.0.0",
     "@stylistic/eslint-plugin": "^5.0.0",
     "@vitest/eslint-plugin": "^1.6.14",
-    "eslint": "^9.19.0",
+    "eslint": "^9.19.0 || ^10.0.0",
     "eslint-plugin-jest": "^28.11.0",
     "typescript-eslint": "^8.23.0"
   },
