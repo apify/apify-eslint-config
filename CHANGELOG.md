@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.4 - 2026-04-10
+
+### Bug Fixes
+- Drop ESLint 10 from peer dep ranges to fix ERESOLVE conflicts (#40)
+
+
 ## 2.0.3 - 2026-04-09
 
 ### Features
