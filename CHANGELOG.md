@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.5 - 2026-04-11
+
+### Bug Fixes
+- Add eslint-import-resolver-node to dependencies (#41)
+
+
 ## 2.0.4 - 2026-04-10
 
 ### Bug Fixes
