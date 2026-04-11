@@ -3,6 +3,16 @@ const globals = require('globals');
 const pluginImportX = require('eslint-plugin-import-x');
 const simpleImportSort = require('eslint-plugin-simple-import-sort');
 
+// Opt in to `eslint-plugin-import-x`'s new-style resolver via a single reusable
+// instance. The legacy `node` resolver path (used when `import-x/resolver-next`
+// is not set) constructs a fresh `unrs-resolver.ResolverFactory` on every
+// import resolution, which leaks native memory and OOMs ESLint workers on
+// large monorepos — see un-ts/eslint-plugin-import-x#481. The new path reuses
+// the single `createNodeResolver()` instance passed to `import-x/resolver-next`
+// across all resolutions within a lint run, so the leak is structurally
+// impossible.
+const nodeResolver = pluginImportX.createNodeResolver();
+
 module.exports = [
     js.configs.recommended,
     pluginImportX.flatConfigs.recommended,
@@ -18,6 +28,10 @@ module.exports = [
 
             ecmaVersion: 'latest',
             sourceType: 'module',
+        },
+
+        settings: {
+            'import-x/resolver-next': [nodeResolver],
         },
 
         plugins: {
