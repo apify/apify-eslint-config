@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.6 - 2026-04-11
+
+### Bug Fixes
+- Set import-x/resolver-next with a reusable createNodeResolver instance (#42)
+
+
 ## 2.0.5 - 2026-04-11
 
 ### Bug Fixes
