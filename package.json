@@ -23,6 +23,7 @@
     "./style.js": "./style.js"
   },
   "dependencies": {
+    "eslint-import-resolver-node": "^0.3.10",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.14.0"
