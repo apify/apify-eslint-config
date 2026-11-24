@@ -24,7 +24,9 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
-    environment: npm
+    environment:
+      name: npm
+      deployment: false
     steps:
       - name: Check if branch is `master`
         if: github.ref != 'refs/heads/master'
